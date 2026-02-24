@@ -10,46 +10,29 @@ const registerUser = async (req, res, next) => {
     try {
         const { name, email, password, role } = req.body;
 
-        let user = await User.findOne({ email });
+        const userExists = await User.findOne({ email });
 
-        if (user) {
-            if (!user.isVerified) {
-                // Allow re-registering if unverified
-                await User.deleteOne({ email });
-            } else {
-                res.status(400);
-                throw new Error('User already exists');
-            }
+        if (userExists) {
+            res.status(400);
+            throw new Error('User already exists');
         }
 
-        user = await User.create({
+        const user = await User.create({
             name,
             email,
             password,
             role: role || 'seeker',
-            isVerified: false
+            isVerified: true // Set to true directly to bypass OTP
         });
 
         if (user) {
-            const otp = Math.floor(100000 + Math.random() * 900000).toString();
-            user.otp = otp;
-            user.otpExpires = Date.now() + 60 * 1000; // 1 minute
-            await user.save();
-
-            try {
-                await sendEmail({
-                    email: user.email,
-                    subject: 'Verify your email - HireHive',
-                    message: `Your verification OTP is ${otp}. It will expire in 1 minute.`,
-                    html: getOTPTemplate(otp, 'verification')
-                });
-            } catch (err) {
-                console.error("Email sending failed", err);
-            }
-
+            generateToken(res, user._id);
             res.status(201).json({
-                message: 'Registration successful. Please verify your email with the OTP sent to your inbox.',
-                email: user.email
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+                message: 'Registration successful!'
             });
         } else {
             res.status(400);
@@ -75,10 +58,6 @@ const loginUser = async (req, res, next) => {
         const user = await User.findOne({ email });
 
         if (user && (await user.matchPassword(password))) {
-            if (!user.isVerified) {
-                res.status(403);
-                throw new Error('NOT_VERIFIED'); // Used to trigger React redirect
-            }
             generateToken(res, user._id);
             res.json({
                 _id: user._id,

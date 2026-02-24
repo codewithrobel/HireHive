@@ -7,13 +7,13 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    axios.defaults.baseURL = import.meta.env.PROD ? '/api' : 'http://localhost:5001/api';
+    axios.defaults.baseURL = import.meta.env.PROD ? 'https://hirehive-o1x6.onrender.com/api' : 'http://localhost:5001/api';
     axios.defaults.withCredentials = true;
 
     const getFileUrl = (path) => {
         if (!path) return '';
         if (path.startsWith('http')) return path;
-        const baseUrl = import.meta.env.PROD ? '' : 'http://localhost:5001';
+        const baseUrl = import.meta.env.PROD ? 'https://hirehive-o1x6.onrender.com' : 'http://localhost:5001';
         return `${baseUrl}${path}`;
     };
 

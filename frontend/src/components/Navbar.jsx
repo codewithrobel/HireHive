@@ -61,6 +61,17 @@ const Navbar = () => {
 
                         <div className="h-6 w-px bg-zinc-200 dark:bg-white/10 mx-2"></div>
 
+                        {user?.role === 'admin' && (
+                            <Link
+                                to="/admin"
+                                className={`text-sm font-black px-4 py-2 rounded-xl border transition-all ${location.pathname === '/admin'
+                                    ? 'bg-indigo-600 text-white border-indigo-600 shadow-md'
+                                    : 'text-indigo-600 dark:text-indigo-400 border-indigo-100 dark:border-indigo-500/20 bg-indigo-50/50 dark:bg-indigo-500/5 hover:bg-indigo-100 dark:hover:bg-indigo-500/10'}`}
+                            >
+                                Admin Panel
+                            </Link>
+                        )}
+
                         <button
                             onClick={toggleTheme}
                             className="p-2.5 rounded-xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-white/10 transition-all"
@@ -80,7 +91,9 @@ const Navbar = () => {
                                             </div>
                                         )}
                                     </div>
-                                    <span className="text-sm font-bold text-zinc-700 dark:text-zinc-300 group-hover:text-indigo-600 dark:group-hover:text-white transition-colors">Dash</span>
+                                    <span className="text-sm font-bold text-zinc-700 dark:text-zinc-300 group-hover:text-indigo-600 dark:group-hover:text-white transition-colors">
+                                        {user.name.split(' ')[0]}
+                                    </span>
                                 </Link>
 
                                 <button

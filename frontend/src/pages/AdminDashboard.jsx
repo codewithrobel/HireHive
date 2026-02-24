@@ -3,7 +3,7 @@ import axios from 'axios';
 import AuthContext from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import { Users, Briefcase, Trash2, LayoutDashboard } from 'lucide-react';
+import { Users, Briefcase, Trash2, LayoutDashboard, Clock } from 'lucide-react';
 
 const AdminDashboard = () => {
     const { user } = useContext(AuthContext);
@@ -13,6 +13,14 @@ const AdminDashboard = () => {
     const [users, setUsers] = useState([]);
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [currentTime, setCurrentTime] = useState(new Date());
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentTime(new Date());
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
 
     useEffect(() => {
         // Kick them out if not admin
@@ -87,6 +95,16 @@ const AdminDashboard = () => {
                         <p className="text-zinc-500 dark:text-zinc-400 font-medium">Manage all platform users and job listings from one place.</p>
                     </div>
 
+                    <div className="hidden md:flex flex-col items-end gap-1">
+                        <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold bg-indigo-50 dark:bg-indigo-500/10 px-4 py-2 rounded-xl border border-indigo-100 dark:border-indigo-500/20 shadow-sm">
+                            <Clock size={16} />
+                            <span>{currentTime.toLocaleTimeString()}</span>
+                        </div>
+                        <div className="text-[10px] uppercase tracking-[0.2em] font-black text-zinc-400 dark:text-zinc-500 mr-1">
+                            Real-time Portal
+                        </div>
+                    </div>
+
                     <div className="flex gap-4">
                         <div className="bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/5 rounded-2xl px-6 py-4 text-center shadow-inner">
                             <div className="text-2xl font-black text-indigo-600 dark:text-indigo-400">{users.length}</div>
@@ -104,8 +122,8 @@ const AdminDashboard = () => {
                     <button
                         onClick={() => setActiveTab('users')}
                         className={`flex items-center gap-2 pb-4 px-6 font-bold transition-all text-lg ${activeTab === 'users'
-                                ? 'text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400 drop-shadow-sm'
-                                : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200'
+                            ? 'text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400 drop-shadow-sm'
+                            : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200'
                             }`}
                     >
                         <Users size={20} />
@@ -114,8 +132,8 @@ const AdminDashboard = () => {
                     <button
                         onClick={() => setActiveTab('jobs')}
                         className={`flex items-center gap-2 pb-4 px-6 font-bold transition-all text-lg ${activeTab === 'jobs'
-                                ? 'text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400 drop-shadow-sm'
-                                : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200'
+                            ? 'text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400 drop-shadow-sm'
+                            : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200'
                             }`}
                     >
                         <Briefcase size={20} />
@@ -143,8 +161,8 @@ const AdminDashboard = () => {
                                             <td className="py-4 px-6 text-zinc-500 dark:text-zinc-400">{u.email}</td>
                                             <td className="py-4 px-6">
                                                 <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${u.role === 'admin' ? 'bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-500/20 dark:text-fuchsia-300' :
-                                                        u.role === 'recruiter' ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-300' :
-                                                            'bg-zinc-100 text-zinc-700 dark:bg-zinc-500/20 dark:text-zinc-300'
+                                                    u.role === 'recruiter' ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-300' :
+                                                        'bg-zinc-100 text-zinc-700 dark:bg-zinc-500/20 dark:text-zinc-300'
                                                     }`}>
                                                     {u.role.toUpperCase()}
                                                 </span>
@@ -154,8 +172,8 @@ const AdminDashboard = () => {
                                                     onClick={() => handleDeleteUser(u._id)}
                                                     disabled={u.email === user.email}
                                                     className={`p-2 rounded-xl transition-all ${u.email === user.email
-                                                            ? 'text-zinc-300 dark:text-zinc-700 cursor-not-allowed'
-                                                            : 'text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-500/10'
+                                                        ? 'text-zinc-300 dark:text-zinc-700 cursor-not-allowed'
+                                                        : 'text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-500/10'
                                                         }`}
                                                     title={u.email === user.email ? "You cannot delete yourself" : "Delete User"}
                                                 >

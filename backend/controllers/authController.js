@@ -33,14 +33,14 @@ const registerUser = async (req, res, next) => {
         if (user) {
             const otp = Math.floor(100000 + Math.random() * 900000).toString();
             user.otp = otp;
-            user.otpExpires = Date.now() + 30 * 1000; // 30 seconds
+            user.otpExpires = Date.now() + 60 * 1000; // 1 minute
             await user.save();
 
             try {
                 await sendEmail({
                     email: user.email,
                     subject: 'Verify your email - HireHive',
-                    message: `Your verification OTP is ${otp}. It will expire in 30 seconds.`,
+                    message: `Your verification OTP is ${otp}. It will expire in 1 minute.`,
                     html: getOTPTemplate(otp, 'verification')
                 });
             } catch (err) {
@@ -288,14 +288,14 @@ const resendOTP = async (req, res, next) => {
 
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
         user.otp = otp;
-        user.otpExpires = Date.now() + 30 * 1000; // 30 seconds
+        user.otpExpires = Date.now() + 60 * 1000; // 1 minute
         await user.save();
 
         try {
             await sendEmail({
                 email: user.email,
                 subject: 'Verify your email - HireHive',
-                message: `Your new verification OTP is ${otp}. It will expire in 30 seconds.`,
+                message: `Your new verification OTP is ${otp}. It will expire in 1 minute.`,
                 html: getOTPTemplate(otp, 'verification')
             });
         } catch (err) {
@@ -323,14 +323,14 @@ const forgotPassword = async (req, res, next) => {
 
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
         user.otp = otp;
-        user.otpExpires = Date.now() + 30 * 1000; // 30 seconds
+        user.otpExpires = Date.now() + 60 * 1000; // 1 minute
         await user.save();
 
         try {
             await sendEmail({
                 email: user.email,
                 subject: 'Password Reset OTP - HireHive',
-                message: `Your password reset OTP is ${otp}. It will expire in 30 seconds.`,
+                message: `Your password reset OTP is ${otp}. It will expire in 1 minute.`,
                 html: getOTPTemplate(otp, 'reset')
             });
         } catch (err) {

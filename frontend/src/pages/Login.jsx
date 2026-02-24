@@ -51,7 +51,7 @@ const Login = () => {
                 setIsOtpStep(true);
                 try {
                     await resendOTP(data.email);
-                    setTimer(30);
+                    setTimer(60);
                     toast.success('Account not verified. A new OTP has been sent to your email.');
                 } catch (resendError) {
                     toast.error('Failed to send verification OTP.');
@@ -79,7 +79,7 @@ const Login = () => {
         if (timer > 0) return;
         try {
             await resendOTP(registeredEmail);
-            setTimer(30);
+            setTimer(60);
             toast.success('New OTP sent to your email.');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Failed to resend OTP.');

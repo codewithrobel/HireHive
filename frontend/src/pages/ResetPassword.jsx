@@ -14,7 +14,7 @@ const ResetPassword = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [timer, setTimer] = useState(30);
+    const [timer, setTimer] = useState(60);
 
     useEffect(() => {
         let interval;
@@ -32,7 +32,7 @@ const ResetPassword = () => {
         if (timer > 0) return;
         try {
             await resendOTP(email);
-            setTimer(30);
+            setTimer(60);
             toast.success('New OTP sent to your email.');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Failed to resend OTP.');

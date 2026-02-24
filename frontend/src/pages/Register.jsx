@@ -54,7 +54,7 @@ const Register = () => {
             });
             setRegisteredEmail(data.email);
             setIsOtpStep(true);
-            setTimer(30);
+            setTimer(60);
             toast.success(res.message || 'Registration successful! Please check your email for the OTP.');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Registration failed. Please try again.');
@@ -78,7 +78,7 @@ const Register = () => {
         if (timer > 0) return;
         try {
             await resendOTP(registeredEmail);
-            setTimer(30);
+            setTimer(60);
             toast.success('New OTP sent to your email.');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Failed to resend OTP.');

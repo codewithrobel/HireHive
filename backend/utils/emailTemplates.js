@@ -124,7 +124,7 @@ export const getOTPTemplate = (otp, type = 'verification') => {
                 
                 <div style="text-align: center;">
                     <div class="expiry">
-                        ⏱ EXPIRES IN 30 SECONDS
+                        ⏱ EXPIRES IN 1 MINUTE
                     </div>
                 </div>
                 

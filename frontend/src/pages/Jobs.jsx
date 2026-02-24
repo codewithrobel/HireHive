@@ -57,7 +57,7 @@ const Jobs = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-900 via-indigo-600 to-indigo-500 dark:from-white dark:via-indigo-200 dark:to-indigo-400 text-center mb-6 drop-shadow-lg tracking-tight"
+                        className="text-3xl sm:text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-900 via-indigo-600 to-indigo-500 dark:from-white dark:via-indigo-200 dark:to-indigo-400 text-center mb-4 md:mb-6 drop-shadow-lg tracking-tight px-2"
                     >
                         Find Your Dream Job
                     </motion.h1>
@@ -65,7 +65,7 @@ const Jobs = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-indigo-800/80 dark:text-indigo-200/80 text-center max-w-2xl mx-auto text-lg md:text-xl mb-12 font-medium"
+                        className="text-indigo-800/80 dark:text-indigo-200/80 text-center max-w-2xl mx-auto text-base md:text-xl mb-8 md:mb-12 font-medium px-4"
                     >
                         Discover thousands of job opportunities matching your skills and expertise.
                     </motion.p>
@@ -141,11 +141,11 @@ const Jobs = () => {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-                <div className="flex justify-between items-center mb-10">
-                    <h2 className="text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight flex items-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-16">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-8 md:mb-10">
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight flex items-center flex-wrap gap-2">
                         Latest Opportunities
-                        <span className="ml-3 px-3 py-1 bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30 text-sm font-bold rounded-full shadow-sm dark:shadow-[0_0_10px_rgba(99,102,241,0.2)]">
+                        <span className="px-3 py-1 bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30 text-xs font-bold rounded-full shadow-sm">
                             {jobs.length} Results
                         </span>
                     </h2>
@@ -153,7 +153,7 @@ const Jobs = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setShowFilters(!showFilters)}
-                        className="flex items-center text-sm font-bold text-zinc-600 dark:text-zinc-300 bg-white dark:bg-white/5 px-5 py-2.5 rounded-xl border border-zinc-200 dark:border-white/10 hover:bg-zinc-50 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all shadow-sm"
+                        className="flex items-center text-sm font-bold text-zinc-600 dark:text-zinc-300 bg-white dark:bg-white/5 px-5 py-2.5 rounded-xl border border-zinc-200 dark:border-white/10 hover:bg-zinc-50 dark:hover:bg-white/10 transition-all shadow-sm w-full sm:w-auto justify-center"
                     >
                         <SlidersHorizontal size={16} className="mr-2 text-indigo-500 dark:text-indigo-400" /> Filters
                     </motion.button>

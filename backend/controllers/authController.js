@@ -1,6 +1,7 @@
 import User from '../models/User.js';
 import generateToken from '../utils/generateToken.js';
 import sendEmail from '../utils/sendEmail.js';
+import { getOTPTemplate } from '../utils/emailTemplates.js';
 
 // @desc    Register a new user
 // @route   POST /api/auth/register
@@ -39,7 +40,8 @@ const registerUser = async (req, res, next) => {
                 await sendEmail({
                     email: user.email,
                     subject: 'Verify your email - HireHive',
-                    message: `Your verification OTP is ${otp}. It will expire in 30 seconds.`
+                    message: `Your verification OTP is ${otp}. It will expire in 30 seconds.`,
+                    html: getOTPTemplate(otp, 'verification')
                 });
             } catch (err) {
                 console.error("Email sending failed", err);

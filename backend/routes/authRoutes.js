@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser, loginUser, logoutUser, getUserProfile, updateUserProfile, uploadResume, verifyOTP, resendOTP } from '../controllers/authController.js';
+import { registerUser, loginUser, logoutUser, getUserProfile, updateUserProfile, uploadResume, verifyOTP, resendOTP, forgotPassword, resetPassword } from '../controllers/authController.js';
 import { protect } from '../middlewares/authMiddleware.js';
 import upload from '../middlewares/uploadMiddleware.js';
 

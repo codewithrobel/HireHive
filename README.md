@@ -12,9 +12,8 @@ A full-stack, stunningly designed job portal (HireHive) built with the MERN stac
 
 ## Live Demo (Localtunnel)
 
-If the server is currently running, you can access the live version at:
-**[https://honest-keys-beam.loca.lt](https://honest-keys-beam.loca.lt)**
-*(Note: Use IP `49.156.89.197` if prompted for a tunnel password)*
+## Deployment
+The project is prepared for deployment. Follow the [Deployment Guide](file:///Users/priyanshusingh/.gemini/antigravity/brain/91bc7cb9-16f3-488c-b704-1364e35e0d97/deployment_guide.md) to go live on a production server.
 
 ## Getting Started
 

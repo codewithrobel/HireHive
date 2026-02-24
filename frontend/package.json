@@ -23,19 +23,17 @@
     "react-hot-toast": "^2.6.0",
     "react-router-dom": "^7.13.1",
     "react-simple-captcha": "^9.3.1",
-    "tailwindcss": "^4.2.1"
+    "tailwindcss": "^4.2.1",
+    "@vitejs/plugin-react": "^5.1.1",
+    "vite": "^7.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.1",
-    "eslint": "^9.39.1",
-    "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
-    "puppeteer": "^24.37.5",
-    "vite": "^7.3.1"
+    "puppeteer": "^24.37.5"
   },
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
   "main": "eslint.config.js",

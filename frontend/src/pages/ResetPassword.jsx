@@ -14,6 +14,30 @@ const ResetPassword = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [timer, setTimer] = useState(30);
+
+    useEffect(() => {
+        let interval;
+        if (timer > 0) {
+            interval = setInterval(() => {
+                setTimer((prev) => prev - 1);
+            }, 1000);
+        }
+        return () => clearInterval(interval);
+    }, [timer]);
+
+    const { resendOTP } = useContext(AuthContext);
+
+    const handleResendOtp = async () => {
+        if (timer > 0) return;
+        try {
+            await resendOTP(email);
+            setTimer(30);
+            toast.success('New OTP sent to your email.');
+        } catch (error) {
+            toast.error(error.response?.data?.message || 'Failed to resend OTP.');
+        }
+    };
 
     const email = location.state?.email;
 
@@ -58,6 +82,11 @@ const ResetPassword = () => {
                     </div>
                     <h2 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white drop-shadow-sm">Reset Password</h2>
                     <p className="text-zinc-500 dark:text-zinc-400 mt-2 font-medium">OTP sent to {email}</p>
+                    {timer > 0 && (
+                        <p className="text-indigo-600 dark:text-indigo-400 mt-2 text-sm font-black tracking-widest bg-indigo-50 dark:bg-indigo-500/10 px-4 py-1.5 rounded-full inline-block">
+                            EXPIRING IN: {timer}s
+                        </p>
+                    )}
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -115,6 +144,18 @@ const ResetPassword = () => {
                         {isSubmitting ? <Loader className="animate-spin" size={20} /> : 'Reset Password'}
                     </button>
                 </form>
+
+                <p className="text-center mt-8 text-zinc-500 dark:text-zinc-400 font-medium">
+                    Didn't receive the email?{' '}
+                    <button
+                        onClick={handleResendOtp}
+                        disabled={timer > 0}
+                        type="button"
+                        className={`font-bold transition-colors drop-shadow-sm ${timer > 0 ? 'text-zinc-400 cursor-not-allowed' : 'text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300'}`}
+                    >
+                        {timer > 0 ? `Resend in ${timer}s` : 'Resend OTP'}
+                    </button>
+                </p>
             </div>
         </div>
     );

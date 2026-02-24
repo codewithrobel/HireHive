@@ -32,14 +32,14 @@ const registerUser = async (req, res, next) => {
         if (user) {
             const otp = Math.floor(100000 + Math.random() * 900000).toString();
             user.otp = otp;
-            user.otpExpires = Date.now() + 10 * 60 * 1000; // 10 mins
+            user.otpExpires = Date.now() + 30 * 1000; // 30 seconds
             await user.save();
 
             try {
                 await sendEmail({
                     email: user.email,
                     subject: 'Verify your email - HireHive',
-                    message: `Your verification OTP is ${otp}. It will expire in 10 minutes.`
+                    message: `Your verification OTP is ${otp}. It will expire in 30 seconds.`
                 });
             } catch (err) {
                 console.error("Email sending failed", err);
@@ -286,7 +286,7 @@ const resendOTP = async (req, res, next) => {
 
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
         user.otp = otp;
-        user.otpExpires = Date.now() + 10 * 60 * 1000;
+        user.otpExpires = Date.now() + 30 * 1000; // 30 seconds
         await user.save();
 
         try {
@@ -320,7 +320,7 @@ const forgotPassword = async (req, res, next) => {
 
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
         user.otp = otp;
-        user.otpExpires = Date.now() + 10 * 60 * 1000; // 10 mins
+        user.otpExpires = Date.now() + 30 * 1000; // 30 seconds
         await user.save();
 
         try {

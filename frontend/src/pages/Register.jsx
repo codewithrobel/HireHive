@@ -19,6 +19,17 @@ const Register = () => {
     const [registeredEmail, setRegisteredEmail] = useState('');
     const [otp, setOtp] = useState('');
     const [captchaValue, setCaptchaValue] = useState('');
+    const [timer, setTimer] = useState(0);
+
+    useEffect(() => {
+        let interval;
+        if (timer > 0) {
+            interval = setInterval(() => {
+                setTimer((prev) => prev - 1);
+            }, 1000);
+        }
+        return () => clearInterval(interval);
+    }, [timer]);
 
     useEffect(() => {
         if (!isOtpStep) {
@@ -43,6 +54,7 @@ const Register = () => {
             });
             setRegisteredEmail(data.email);
             setIsOtpStep(true);
+            setTimer(30);
             toast.success(res.message || 'Registration successful! Please check your email for the OTP.');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Registration failed. Please try again.');
@@ -63,8 +75,10 @@ const Register = () => {
     };
 
     const handleResendOtp = async () => {
+        if (timer > 0) return;
         try {
             await resendOTP(registeredEmail);
+            setTimer(30);
             toast.success('New OTP sent to your email.');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Failed to resend OTP.');
@@ -86,6 +100,11 @@ const Register = () => {
                             </div>
                             <h2 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white drop-shadow-sm">Verify Email</h2>
                             <p className="text-zinc-500 dark:text-zinc-400 mt-2 font-medium">Enter the 6-digit OTP sent to {registeredEmail}</p>
+                            {timer > 0 && (
+                                <p className="text-indigo-600 dark:text-indigo-400 mt-2 text-sm font-black tracking-widest bg-indigo-50 dark:bg-indigo-500/10 px-4 py-1.5 rounded-full inline-block">
+                                    EXPIRING IN: {timer}s
+                                </p>
+                            )}
                         </div>
 
                         <form onSubmit={handleOtpSubmit} className="space-y-6">
@@ -113,8 +132,13 @@ const Register = () => {
 
                         <p className="text-center mt-8 text-zinc-500 dark:text-zinc-400 font-medium">
                             Didn't receive the email?{' '}
-                            <button onClick={handleResendOtp} type="button" className="font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors drop-shadow-sm">
-                                Resend OTP
+                            <button
+                                onClick={handleResendOtp}
+                                disabled={timer > 0}
+                                type="button"
+                                className={`font-bold transition-colors drop-shadow-sm ${timer > 0 ? 'text-zinc-400 cursor-not-allowed' : 'text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300'}`}
+                            >
+                                {timer > 0 ? `Resend in ${timer}s` : 'Resend OTP'}
                             </button>
                         </p>
                     </>

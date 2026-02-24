@@ -1,5 +1,6 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useCallback, useRef } from 'react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const AuthContext = createContext();
 
@@ -20,6 +21,65 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         checkUserLoggedIn();
     }, []);
+
+    // --- Auto Logout on Inactivity (15 minutes) ---
+    const inactivityLogoutTimer = useRef(null);
+
+    const resetInactivityTimer = useCallback(() => {
+        if (inactivityLogoutTimer.current) {
+            clearTimeout(inactivityLogoutTimer.current);
+        }
+
+        // 15 minutes (15 * 60 * 1000 = 900000 ms)
+        inactivityLogoutTimer.current = setTimeout(() => {
+            if (user) {
+                logout();
+                toast('You have been logged out due to inactivity.', {
+                    icon: '😴',
+                    style: {
+                        borderRadius: '10px',
+                        background: '#3f3f46',
+                        color: '#fff',
+                    },
+                });
+            }
+        }, 900000);
+    }, [user]);
+
+    useEffect(() => {
+        // Only track inactivity if the user is logged in
+        if (!user) {
+            if (inactivityLogoutTimer.current) {
+                clearTimeout(inactivityLogoutTimer.current);
+            }
+            return;
+        }
+
+        const events = ['mousemove', 'keydown', 'scroll', 'click'];
+
+        const handleActivity = () => {
+            resetInactivityTimer();
+        };
+
+        // Initialize the timer
+        resetInactivityTimer();
+
+        // Attach event listeners
+        events.forEach(event => {
+            window.addEventListener(event, handleActivity);
+        });
+
+        // Cleanup
+        return () => {
+            if (inactivityLogoutTimer.current) {
+                clearTimeout(inactivityLogoutTimer.current);
+            }
+            events.forEach(event => {
+                window.removeEventListener(event, handleActivity);
+            });
+        };
+    }, [user, resetInactivityTimer]);
+    // ----------------------------------------------
 
     const checkUserLoggedIn = async () => {
         try {

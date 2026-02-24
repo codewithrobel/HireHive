@@ -26,37 +26,28 @@ const registerUser = async (req, res, next) => {
             email,
             password,
             role: role || 'seeker',
-            isVerified: true // TEMPORARILY SET TO TRUE
+            isVerified: false
         });
 
         if (user) {
-            // TEMPORARY BYPASS OF OTP
-            // const otp = Math.floor(100000 + Math.random() * 900000).toString();
-            // user.otp = otp;
-            // user.otpExpires = Date.now() + 10 * 60 * 1000; // 10 mins
-            // await user.save();
+            const otp = Math.floor(100000 + Math.random() * 900000).toString();
+            user.otp = otp;
+            user.otpExpires = Date.now() + 10 * 60 * 1000; // 10 mins
+            await user.save();
 
-            // try {
-            //     await sendEmail({
-            //         email: user.email,
-            //         subject: 'Verify your email - HireHive',
-            //         message: `Your verification OTP is ${otp}. It will expire in 10 minutes.`
-            //     });
-            // } catch (err) {
-            //     console.error("Email sending failed", err);
-            // }
+            try {
+                await sendEmail({
+                    email: user.email,
+                    subject: 'Verify your email - HireHive',
+                    message: `Your verification OTP is ${otp}. It will expire in 10 minutes.`
+                });
+            } catch (err) {
+                console.error("Email sending failed", err);
+            }
 
-            // res.status(201).json({
-            //     message: 'Registration successful. Please verify your email with the OTP sent to your inbox.',
-            //     email: user.email
-            // });
-
-            generateToken(res, user._id);
             res.status(201).json({
-                _id: user._id,
-                name: user.name,
-                email: user.email,
-                role: user.role,
+                message: 'Registration successful. Please verify your email with the OTP sent to your inbox.',
+                email: user.email
             });
         } else {
             res.status(400);
@@ -77,11 +68,10 @@ const loginUser = async (req, res, next) => {
         const user = await User.findOne({ email });
 
         if (user && (await user.matchPassword(password))) {
-            // TEMPORARY BYPASS OF OTP
-            // if (!user.isVerified) {
-            //     res.status(403);
-            //     throw new Error('NOT_VERIFIED'); // Used to trigger React redirect
-            // }
+            if (!user.isVerified) {
+                res.status(403);
+                throw new Error('NOT_VERIFIED'); // Used to trigger React redirect
+            }
             generateToken(res, user._id);
             res.json({
                 _id: user._id,
@@ -315,4 +305,76 @@ const resendOTP = async (req, res, next) => {
     }
 };
 
-export { registerUser, loginUser, logoutUser, getUserProfile, updateUserProfile, uploadResume, verifyOTP, resendOTP };
+// @desc    Forgot Password
+// @route   POST /api/auth/forgot-password
+// @access  Public
+const forgotPassword = async (req, res, next) => {
+    try {
+        const { email } = req.body;
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            res.status(404);
+            throw new Error('User with this email does not exist');
+        }
+
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
+        user.otp = otp;
+        user.otpExpires = Date.now() + 10 * 60 * 1000; // 10 mins
+        await user.save();
+
+        try {
+            await sendEmail({
+                email: user.email,
+                subject: 'Password Reset OTP - HireHive',
+                message: `Your password reset OTP is ${otp}. It will expire in 10 minutes.`
+            });
+        } catch (err) {
+            console.error("Email sending failed", err);
+        }
+
+        res.status(200).json({ message: 'Password reset OTP sent to your email' });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// @desc    Reset Password
+// @route   POST /api/auth/reset-password
+// @access  Public
+const resetPassword = async (req, res, next) => {
+    try {
+        const { email, otp, password } = req.body;
+
+        const user = await User.findOne({ email });
+        if (!user) {
+            res.status(404);
+            throw new Error('User not found');
+        }
+
+        if (user.otp !== otp) {
+            res.status(400);
+            throw new Error('Invalid OTP');
+        }
+
+        if (user.otpExpires < Date.now()) {
+            res.status(400);
+            throw new Error('OTP has expired');
+        }
+
+        // Update password and clear OTP
+        user.password = password;
+        user.otp = undefined;
+        user.otpExpires = undefined;
+        // Also verify if not already verified
+        user.isVerified = true;
+
+        await user.save();
+
+        res.status(200).json({ message: 'Password reset successfully. You can now login.' });
+    } catch (error) {
+        next(error);
+    }
+};
+
+export { registerUser, loginUser, logoutUser, getUserProfile, updateUserProfile, uploadResume, verifyOTP, resendOTP, forgotPassword, resetPassword };

@@ -35,18 +35,15 @@ const Register = () => {
         }
 
         try {
-            await register({
+            const res = await register({
                 name: data.name,
                 email: data.email,
                 password: data.password,
                 role: data.role
             });
-            // TEMPORARY BYPASS OF OTP
-            // setRegisteredEmail(data.email);
-            // setIsOtpStep(true);
-            // toast.success('Registration successful! Please check your email for the OTP.');
-            toast.success('Registration successful!');
-            navigate('/dashboard');
+            setRegisteredEmail(data.email);
+            setIsOtpStep(true);
+            toast.success(res.message || 'Registration successful! Please check your email for the OTP.');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Registration failed. Please try again.');
             setCaptchaValue('');

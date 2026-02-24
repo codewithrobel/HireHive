@@ -35,21 +35,20 @@ const Login = () => {
             toast.success('Login successful!');
             navigate('/dashboard');
         } catch (error) {
-            // TEMPORARY BYPASS OF OTP
-            // if (error.response?.data?.message === 'NOT_VERIFIED') {
-            //     setRegisteredEmail(data.email);
-            //     setIsOtpStep(true);
-            //     try {
-            //         await resendOTP(data.email);
-            //         toast.success('Account not verified. A new OTP has been sent to your email.');
-            //     } catch (resendError) {
-            //         toast.error('Failed to send verification OTP.');
-            //     }
-            // } else {
-            toast.error(error.response?.data?.message || 'Login failed. Please try again.');
-            setCaptchaValue('');
-            loadCaptchaEnginge(6, 'transparent');
-            // }
+            if (error.response?.data?.message === 'NOT_VERIFIED') {
+                setRegisteredEmail(data.email);
+                setIsOtpStep(true);
+                try {
+                    await resendOTP(data.email);
+                    toast.success('Account not verified. A new OTP has been sent to your email.');
+                } catch (resendError) {
+                    toast.error('Failed to send verification OTP.');
+                }
+            } else {
+                toast.error(error.response?.data?.message || 'Login failed. Please try again.');
+                setCaptchaValue('');
+                loadCaptchaEnginge(6, 'transparent');
+            }
         }
     };
 
@@ -145,7 +144,7 @@ const Login = () => {
                             <div>
                                 <div className="flex items-center justify-between mb-1.5 px-1">
                                     <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300">Password</label>
-                                    <a href="#" className="text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors drop-shadow-sm">Forgot password?</a>
+                                    <Link to="/forgot-password" title="Recover Password" className="text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors drop-shadow-sm">Forgot password?</Link>
                                 </div>
                                 <div className="relative">
                                     <input

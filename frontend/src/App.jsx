@@ -11,6 +11,8 @@ import JobApplicants from './pages/JobApplicants';
 import About from './pages/About';
 import AdminDashboard from './pages/AdminDashboard';
 import Chatbot from './components/Chatbot';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/post-job" element={<PostJob />} />
           <Route path="/about" element={<About />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           {/* More routes to come */}
         </Routes>
       </main>

@@ -38,10 +38,18 @@ export const AuthProvider = ({ children }) => {
     };
 
     const register = async (userData) => {
-        // TEMPORARY BYPASS OF OTP
         const res = await axios.post('/auth/register', userData);
-        setUser(res.data);
-        // return res.data;
+        return res.data;
+    };
+
+    const forgotPassword = async (email) => {
+        const res = await axios.post('/auth/forgot-password', { email });
+        return res.data;
+    };
+
+    const resetPassword = async (email, otp, password) => {
+        const res = await axios.post('/auth/reset-password', { email, otp, password });
+        return res.data;
     };
 
     const verifyOTP = async (email, otp) => {
@@ -60,7 +68,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, setUser, login, register, logout, loading, checkUserLoggedIn, verifyOTP, resendOTP, getFileUrl }}>
+        <AuthContext.Provider value={{ user, setUser, login, register, logout, loading, checkUserLoggedIn, verifyOTP, resendOTP, forgotPassword, resetPassword, getFileUrl }}>
             {children}
         </AuthContext.Provider>
     );

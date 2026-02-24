@@ -293,7 +293,7 @@ const resendOTP = async (req, res, next) => {
             await sendEmail({
                 email: user.email,
                 subject: 'Verify your email - HireHive',
-                message: `Your new verification OTP is ${otp}. It will expire in 10 minutes.`
+                message: `Your new verification OTP is ${otp}. It will expire in 30 seconds.`
             });
         } catch (err) {
             console.error("Email sending failed", err);
@@ -327,7 +327,7 @@ const forgotPassword = async (req, res, next) => {
             await sendEmail({
                 email: user.email,
                 subject: 'Password Reset OTP - HireHive',
-                message: `Your password reset OTP is ${otp}. It will expire in 10 minutes.`
+                message: `Your password reset OTP is ${otp}. It will expire in 30 seconds.`
             });
         } catch (err) {
             console.error("Email sending failed", err);

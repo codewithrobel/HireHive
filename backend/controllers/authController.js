@@ -32,6 +32,12 @@ const registerUser = async (req, res, next) => {
                 name: user.name,
                 email: user.email,
                 role: user.role,
+                skills: user.skills,
+                resumeOriginalName: user.resumeOriginalName,
+                experience: user.experience,
+                profileInfo: user.profileInfo,
+                profilePicture: user.profilePicture,
+                socialLinks: user.socialLinks,
                 message: 'Registration successful!'
             });
         } else {
@@ -64,6 +70,12 @@ const loginUser = async (req, res, next) => {
                 name: user.name,
                 email: user.email,
                 role: user.role,
+                skills: user.skills,
+                resumeOriginalName: user.resumeOriginalName,
+                experience: user.experience,
+                profileInfo: user.profileInfo,
+                profilePicture: user.profilePicture,
+                socialLinks: user.socialLinks,
             });
         } else {
             res.status(401);

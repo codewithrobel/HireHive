@@ -22,17 +22,25 @@ const storage = multer.diskStorage({
 });
 
 function checkFileType(file, cb) {
-    const filetypes = /pdf|doc|docx/;
-    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-    // Some browsers send different mimetypes for docs, so we heavily rely on extname as fallback, but check mimetype too
-    const mimetype = file.mimetype === 'application/pdf' ||
-        file.mimetype === 'application/msword' ||
-        file.mimetype === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+    if (file.fieldname === 'profilePicture') {
+        const filetypes = /jpeg|jpg|png|webp/;
+        const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+        const mimetype = filetypes.test(file.mimetype);
 
-    if (extname) { // lenient check on mimetype because of MS Word complexities
-        return cb(null, true);
+        if (mimetype && extname) {
+            return cb(null, true);
+        } else {
+            cb(new Error('Images only for profile picture (JPEG, JPG, PNG, WEBP)!'));
+        }
     } else {
-        cb(new Error('Resumes only (PDF, DOC, DOCX)!'));
+        const filetypes = /pdf|doc|docx/;
+        const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+
+        if (extname) {
+            return cb(null, true);
+        } else {
+            cb(new Error('Resumes only (PDF, DOC, DOCX)!'));
+        }
     }
 }
 

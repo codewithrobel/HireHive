@@ -123,10 +123,11 @@ const JobDetails = () => {
                                 className="w-16 h-16 bg-indigo-50 dark:bg-black/40 rounded-2xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-black text-3xl border border-indigo-100 dark:border-white/5 shadow-sm dark:shadow-[0_0_15px_rgba(99,102,241,0.2)] shrink-0 group-hover:shadow-md dark:group-hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all overflow-hidden"
                             >
                                 {job.companyLogo ? (
-                                    <img src={getFileUrl(job.companyLogo)} alt={`${job.company} Logo`} className="w-full h-full object-cover" />
-                                ) : (
-                                    job.company.charAt(0)
-                                )}
+                                    <img src={getFileUrl(job.companyLogo)} alt={`${job.company} Logo`} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
+                                ) : null}
+                                <span style={{ display: job.companyLogo ? 'none' : 'block' }}>
+                                    {job.company?.[0]?.toUpperCase()}
+                                </span>
                             </motion.div>
                             <div>
                                 <h1 className="text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight drop-shadow-md">{job.title}</h1>
@@ -234,7 +235,7 @@ const JobDetails = () => {
                                 </span>
                                 <div>
                                     <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">Salary</p>
-                                    <p className="font-bold text-zinc-900 dark:text-white">${job.salary?.toLocaleString()} / year</p>
+                                    <p className="font-bold text-zinc-900 dark:text-white">{job.currency === 'USD' ? '$' : '₹'}{job.salary?.toLocaleString()} / year</p>
                                 </div>
                             </div>
                             <div className="flex items-start">
@@ -246,6 +247,17 @@ const JobDetails = () => {
                                     <p className="font-bold text-zinc-900 dark:text-white">{new Date(job.createdAt).toLocaleDateString()}</p>
                                 </div>
                             </div>
+                            {job.deadline && (
+                                <div className="flex items-start">
+                                    <span className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-500/20 border border-rose-200 dark:border-rose-500/30 flex items-center justify-center mr-4 shrink-0 text-rose-600 dark:text-rose-400 shadow-sm dark:shadow-[0_0_10px_rgba(244,63,94,0.2)]">
+                                        <Clock size={20} />
+                                    </span>
+                                    <div>
+                                        <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">Expires on</p>
+                                        <p className="font-bold text-zinc-900 dark:text-white">{new Date(job.deadline).toLocaleDateString()}</p>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </motion.div>
                 </div>

@@ -7,6 +7,7 @@ const jobSchema = new mongoose.Schema({
     description: { type: String, required: true },
     skills: [{ type: String }],
     salary: { type: Number, required: true },
+    currency: { type: String, enum: ['INR', 'USD'], default: 'INR' },
     location: { type: String, required: true },
     type: { type: String, enum: ['Full-time', 'Part-time', 'Contract', 'Internship', 'Remote'], required: true },
     experience: { type: String },

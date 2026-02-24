@@ -122,13 +122,22 @@ const PostJob = () => {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-semibold text-zinc-300 mb-1.5 ml-1">Salary (Annual in USD)</label>
-                            <input
-                                type="number"
-                                className="w-full px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
-                                placeholder="e.g. 120000"
-                                {...register('salary', { required: 'Required', min: 0 })}
-                            />
+                            <label className="block text-sm font-semibold text-zinc-300 mb-1.5 ml-1">Salary Amount (Annual)</label>
+                            <div className="flex gap-2">
+                                <select
+                                    className="w-1/3 px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 bg-black/20 focus:bg-black/40 text-white transition-all font-medium appearance-none shadow-inner"
+                                    {...register('currency')}
+                                >
+                                    <option value="INR" className="bg-zinc-900 text-white">INR (₹)</option>
+                                    <option value="USD" className="bg-zinc-900 text-white">USD ($)</option>
+                                </select>
+                                <input
+                                    type="number"
+                                    className="w-2/3 px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
+                                    placeholder="e.g. 1200000"
+                                    {...register('salary', { required: 'Required', min: 0 })}
+                                />
+                            </div>
                         </div>
 
                         <div>
@@ -143,6 +152,15 @@ const PostJob = () => {
                                 <option value="Internship" className="bg-zinc-900 text-white">Internship</option>
                                 <option value="Remote" className="bg-zinc-900 text-white">Remote</option>
                             </select>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-semibold text-zinc-300 mb-1.5 ml-1">Application Deadline</label>
+                            <input
+                                type="date"
+                                className="w-full px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
+                                {...register('deadline')}
+                            />
                         </div>
 
                         <div>

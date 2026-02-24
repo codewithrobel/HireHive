@@ -26,10 +26,11 @@ const JobCard = ({ job, index = 0 }) => {
                         <div className="flex items-center space-x-4">
                             <div className="w-14 h-14 bg-white/80 dark:bg-black/40 rounded-2xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-extrabold text-2xl border border-white dark:border-white/5 shadow-sm dark:shadow-inner shrink-0 group-hover:scale-110 group-hover:border-indigo-200 dark:group-hover:border-indigo-400/50 group-hover:shadow-[0_0_15px_rgba(99,102,241,0.15)] dark:group-hover:shadow-[0_0_15px_rgba(99,102,241,0.4)] transition-all duration-300 overflow-hidden">
                                 {job.companyLogo ? (
-                                    <img src={getFileUrl(job.companyLogo)} alt={`${job.company} Logo`} className="w-full h-full object-cover" />
-                                ) : (
-                                    job.company.charAt(0)
-                                )}
+                                    <img src={getFileUrl(job.companyLogo)} alt={`${job.company} Logo`} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
+                                ) : null}
+                                <span style={{ display: job.companyLogo ? 'none' : 'block' }}>
+                                    {job.company?.[0]?.toUpperCase()}
+                                </span>
                             </div>
                             <div>
                                 <h3 className="text-lg font-bold text-zinc-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors line-clamp-1 drop-shadow-sm">{job.title}</h3>
@@ -47,7 +48,7 @@ const JobCard = ({ job, index = 0 }) => {
                         </div>
                         <div className="flex items-center px-3 py-1.5 bg-white/50 dark:bg-black/30 rounded-lg border border-white/60 dark:border-white/5 font-medium group-hover:border-white/80 dark:group-hover:border-white/10 transition-colors shadow-sm dark:shadow-none">
                             <DollarSign size={14} className="mr-1.5 text-emerald-500 dark:text-emerald-400 drop-shadow-[0_0_5px_rgba(52,211,153,0.2)] dark:drop-shadow-[0_0_5px_rgba(52,211,153,0.5)]" />
-                            {job.salary?.toLocaleString()}
+                            {job.currency === 'USD' ? '$' : '₹'}{job.salary?.toLocaleString()}
                         </div>
                         <div className="flex items-center px-3 py-1.5 bg-white/50 dark:bg-black/30 rounded-lg border border-white/60 dark:border-white/5 font-medium group-hover:border-white/80 dark:group-hover:border-white/10 transition-colors shadow-sm dark:shadow-none">
                             <Clock size={14} className="mr-1.5 text-amber-500 dark:text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.2)] dark:drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]" />
@@ -70,9 +71,16 @@ const JobCard = ({ job, index = 0 }) => {
                         </div>
 
                         <div className="pt-5 flex justify-between items-center border-t border-zinc-200 dark:border-white/10">
-                            <span className="text-xs font-semibold text-zinc-500">
-                                Posted {new Date(job.createdAt).toLocaleDateString()}
-                            </span>
+                            <div className="flex flex-col">
+                                <span className="text-xs font-semibold text-zinc-500">
+                                    Posted: {new Date(job.createdAt).toLocaleDateString()}
+                                </span>
+                                {job.deadline && (
+                                    <span className="text-xs font-semibold text-rose-500 dark:text-rose-400 mt-0.5">
+                                        Expires: {new Date(job.deadline).toLocaleDateString()}
+                                    </span>
+                                )}
+                            </div>
                             <span className="text-sm font-bold text-indigo-600 dark:text-indigo-400 flex items-center group-hover:text-indigo-700 dark:group-hover:text-indigo-300 group-hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.4)] dark:group-hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.8)] transition-all">
                                 View Details
                                 <motion.span

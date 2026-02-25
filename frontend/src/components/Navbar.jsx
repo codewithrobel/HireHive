@@ -38,10 +38,10 @@ const Navbar = () => {
                         className="flex items-center"
                     >
                         <Link to="/" className="flex-shrink-0 flex items-center gap-2 group relative">
-                            <div className="relative p-2 bg-indigo-50 dark:bg-indigo-500/10 rounded-xl border border-indigo-100 dark:border-indigo-500/20 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-500/20 transition-all shadow-sm">
-                                <Briefcase className="h-6 w-6 text-indigo-500 dark:text-indigo-400" />
+                            <div className="relative p-2 bg-blue-50 dark:bg-blue-500/10 rounded-xl border border-blue-100 dark:border-blue-500/20 group-hover:bg-blue-100 dark:group-hover:bg-blue-500/20 transition-all shadow-sm">
+                                <Briefcase className="h-6 w-6 text-blue-500 dark:text-blue-400" />
                             </div>
-                            <span className="font-black text-2xl bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-500 to-indigo-400 dark:from-white dark:via-indigo-200 dark:to-indigo-400 tracking-tight">
+                            <span className="font-black text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-500 to-blue-400 dark:from-white dark:via-blue-200 dark:to-blue-400 tracking-tight">
                                 HireHive
                             </span>
                         </Link>
@@ -53,7 +53,7 @@ const Navbar = () => {
                             <Link
                                 key={link.name}
                                 to={link.path}
-                                className={`text-sm font-bold transition-all hover:text-indigo-600 dark:hover:text-white ${location.pathname === link.path ? 'text-indigo-600 dark:text-white' : 'text-zinc-600 dark:text-zinc-400'}`}
+                                className={`text-sm font-bold transition-all hover:text-blue-600 dark:hover:text-white ${location.pathname === link.path ? 'text-blue-600 dark:text-white' : 'text-zinc-600 dark:text-zinc-400'}`}
                             >
                                 {link.name}
                             </Link>
@@ -65,8 +65,8 @@ const Navbar = () => {
                             <Link
                                 to="/admin"
                                 className={`text-sm font-black px-4 py-2 rounded-xl border transition-all ${location.pathname === '/admin'
-                                    ? 'bg-indigo-600 text-white border-indigo-600 shadow-md'
-                                    : 'text-indigo-600 dark:text-indigo-400 border-indigo-100 dark:border-indigo-500/20 bg-indigo-50/50 dark:bg-indigo-500/5 hover:bg-indigo-100 dark:hover:bg-indigo-500/10'}`}
+                                    ? 'bg-blue-600 text-white border-blue-600 shadow-md'
+                                    : 'text-blue-600 dark:text-blue-400 border-blue-100 dark:border-blue-500/20 bg-blue-50/50 dark:bg-blue-500/5 hover:bg-blue-100 dark:hover:bg-blue-500/10'}`}
                             >
                                 Admin Panel
                             </Link>
@@ -82,16 +82,16 @@ const Navbar = () => {
                         {user ? (
                             <div className="flex items-center gap-4">
                                 <Link to="/dashboard" className="flex items-center gap-2 group">
-                                    <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-transparent group-hover:border-indigo-500/50 transition-all">
+                                    <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-transparent group-hover:border-blue-500/50 transition-all">
                                         {user.profilePicture ? (
                                             <img src={getFileUrl(user.profilePicture)} className="w-full h-full object-cover" alt="Profile" />
                                         ) : (
-                                            <div className="w-full h-full bg-indigo-500/10 flex items-center justify-center text-indigo-500">
+                                            <div className="w-full h-full bg-blue-500/10 flex items-center justify-center text-blue-500">
                                                 <UserCircle size={24} />
                                             </div>
                                         )}
                                     </div>
-                                    <span className="text-sm font-bold text-zinc-700 dark:text-zinc-300 group-hover:text-indigo-600 dark:group-hover:text-white transition-colors">
+                                    <span className="text-sm font-bold text-zinc-700 dark:text-zinc-300 group-hover:text-blue-600 dark:group-hover:text-white transition-colors">
                                         {user.name.split(' ')[0]}
                                     </span>
                                 </Link>
@@ -105,10 +105,10 @@ const Navbar = () => {
                             </div>
                         ) : (
                             <div className="flex items-center gap-3">
-                                <Link to="/login" className="px-5 py-2.5 text-sm font-bold text-zinc-600 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-white transition-colors">
+                                <Link to="/login" className="px-5 py-2.5 text-sm font-bold text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-white transition-colors">
                                     Login
                                 </Link>
-                                <Link to="/register" className="px-6 py-2.5 rounded-xl bg-indigo-600 text-white text-sm font-bold hover:bg-indigo-700 transition-all shadow-lg hover:shadow-indigo-500/25 active:scale-95">
+                                <Link to="/register" className="px-6 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/25 active:scale-95">
                                     Sign Up
                                 </Link>
                             </div>
@@ -125,7 +125,7 @@ const Navbar = () => {
                         </button>
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 focus:outline-none"
+                            className="p-2.5 rounded-xl bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 focus:outline-none"
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
@@ -148,7 +148,7 @@ const Navbar = () => {
                                     <Link
                                         key={link.name}
                                         to={link.path}
-                                        className={`block text-lg font-bold px-4 py-3 rounded-2xl transition-all ${location.pathname === link.path ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-white/5'}`}
+                                        className={`block text-lg font-bold px-4 py-3 rounded-2xl transition-all ${location.pathname === link.path ? 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-white/5'}`}
                                     >
                                         {link.name}
                                     </Link>
@@ -160,11 +160,11 @@ const Navbar = () => {
                             {user ? (
                                 <div className="space-y-4">
                                     <Link to="/dashboard" className="flex items-center gap-4 px-4 py-3 bg-zinc-50 dark:bg-white/5 rounded-2xl">
-                                        <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-indigo-500/20">
+                                        <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-blue-500/20">
                                             {user.profilePicture ? (
                                                 <img src={getFileUrl(user.profilePicture)} className="w-full h-full object-cover" alt="Profile" />
                                             ) : (
-                                                <div className="w-full h-full bg-indigo-500/10 flex items-center justify-center text-indigo-500">
+                                                <div className="w-full h-full bg-blue-500/10 flex items-center justify-center text-blue-500">
                                                     <UserCircle size={24} />
                                                 </div>
                                             )}
@@ -176,7 +176,7 @@ const Navbar = () => {
                                     </Link>
 
                                     {user.role === 'admin' && (
-                                        <Link to="/admin" className="flex items-center gap-3 px-4 py-4 rounded-2xl bg-indigo-600 text-white font-bold shadow-lg shadow-indigo-500/20">
+                                        <Link to="/admin" className="flex items-center gap-3 px-4 py-4 rounded-2xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-500/20">
                                             <LayoutDashboard size={20} />
                                             Admin Dashboard
                                         </Link>
@@ -195,7 +195,7 @@ const Navbar = () => {
                                     <Link to="/login" className="flex justify-center items-center py-4 rounded-2xl bg-zinc-100 dark:bg-white/5 text-zinc-900 dark:text-white font-bold">
                                         Login
                                     </Link>
-                                    <Link to="/register" className="flex justify-center items-center py-4 rounded-2xl bg-indigo-600 text-white font-bold shadow-lg shadow-indigo-500/20">
+                                    <Link to="/register" className="flex justify-center items-center py-4 rounded-2xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-500/20">
                                         Sign Up
                                     </Link>
                                 </div>

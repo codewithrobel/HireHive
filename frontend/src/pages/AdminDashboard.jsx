@@ -76,7 +76,7 @@ const AdminDashboard = () => {
     if (loading) {
         return (
             <div className="flex justify-center items-center h-[calc(100vh-80px)] bg-zinc-50 dark:bg-zinc-950">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 dark:border-indigo-400"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-400"></div>
             </div>
         );
     }
@@ -87,16 +87,16 @@ const AdminDashboard = () => {
                 {/* Header section */}
                 <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 rounded-3xl p-8 mb-8 shadow-sm flex items-center justify-between">
                     <div>
-                        <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-indigo-50 dark:bg-indigo-500/10 mb-4 border border-indigo-100 dark:border-indigo-500/20 shadow-sm relative overflow-hidden group">
-                            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-fuchsia-500/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-300"></div>
-                            <LayoutDashboard className="w-8 h-8 text-indigo-600 dark:text-indigo-400 relative z-10" />
+                        <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-blue-50 dark:bg-blue-500/10 mb-4 border border-blue-100 dark:border-blue-500/20 shadow-sm relative overflow-hidden group">
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-300"></div>
+                            <LayoutDashboard className="w-8 h-8 text-blue-600 dark:text-blue-400 relative z-10" />
                         </div>
                         <h1 className="text-3xl font-extrabold text-zinc-900 dark:text-white mb-2 tracking-tight">Admin Portal</h1>
                         <p className="text-zinc-500 dark:text-zinc-400 font-medium">Manage all platform users and job listings from one place.</p>
                     </div>
 
                     <div className="hidden md:flex flex-col items-end gap-1">
-                        <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-bold bg-indigo-50 dark:bg-indigo-500/10 px-4 py-2 rounded-xl border border-indigo-100 dark:border-indigo-500/20 shadow-sm">
+                        <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold bg-blue-50 dark:bg-blue-500/10 px-4 py-2 rounded-xl border border-blue-100 dark:border-blue-500/20 shadow-sm">
                             <Clock size={16} />
                             <span>{currentTime.toLocaleTimeString()}</span>
                         </div>
@@ -107,11 +107,11 @@ const AdminDashboard = () => {
 
                     <div className="flex gap-4">
                         <div className="bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/5 rounded-2xl px-6 py-4 text-center shadow-inner">
-                            <div className="text-2xl font-black text-indigo-600 dark:text-indigo-400">{users.length}</div>
+                            <div className="text-2xl font-black text-blue-600 dark:text-blue-400">{users.length}</div>
                             <div className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">Total Users</div>
                         </div>
                         <div className="bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/5 rounded-2xl px-6 py-4 text-center shadow-inner">
-                            <div className="text-2xl font-black text-fuchsia-600 dark:text-fuchsia-400">{jobs.length}</div>
+                            <div className="text-2xl font-black text-purple-600 dark:text-purple-400">{jobs.length}</div>
                             <div className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">Total Jobs</div>
                         </div>
                     </div>
@@ -122,7 +122,7 @@ const AdminDashboard = () => {
                     <button
                         onClick={() => setActiveTab('users')}
                         className={`flex items-center gap-2 pb-4 px-6 font-bold transition-all text-lg ${activeTab === 'users'
-                            ? 'text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400 drop-shadow-sm'
+                            ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 drop-shadow-sm'
                             : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200'
                             }`}
                     >
@@ -132,7 +132,7 @@ const AdminDashboard = () => {
                     <button
                         onClick={() => setActiveTab('jobs')}
                         className={`flex items-center gap-2 pb-4 px-6 font-bold transition-all text-lg ${activeTab === 'jobs'
-                            ? 'text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400 drop-shadow-sm'
+                            ? 'text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 drop-shadow-sm'
                             : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200'
                             }`}
                     >
@@ -160,8 +160,8 @@ const AdminDashboard = () => {
                                             <td className="py-4 px-6 text-zinc-900 dark:text-white font-medium">{u.name}</td>
                                             <td className="py-4 px-6 text-zinc-500 dark:text-zinc-400">{u.email}</td>
                                             <td className="py-4 px-6">
-                                                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${u.role === 'admin' ? 'bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-500/20 dark:text-fuchsia-300' :
-                                                    u.role === 'recruiter' ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-300' :
+                                                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${u.role === 'admin' ? 'bg-purple-100 text-purple-700 dark:bg-purple-500/20 dark:text-purple-300' :
+                                                    u.role === 'recruiter' ? 'bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300' :
                                                         'bg-zinc-100 text-zinc-700 dark:bg-zinc-500/20 dark:text-zinc-300'
                                                     }`}>
                                                     {u.role.toUpperCase()}

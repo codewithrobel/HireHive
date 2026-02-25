@@ -53,7 +53,7 @@ const JobApplicants = () => {
     if (loading) {
         return (
             <div className="flex justify-center items-center h-[calc(100vh-4rem)]">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
             </div>
         );
     }
@@ -61,16 +61,16 @@ const JobApplicants = () => {
     return (
         <div className="min-h-screen py-8 text-zinc-700 dark:text-zinc-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <Link to="/dashboard" className="inline-flex items-center text-sm font-bold text-zinc-500 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-white mb-6 transition-colors group">
+                <Link to="/dashboard" className="inline-flex items-center text-sm font-bold text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-white mb-6 transition-colors group">
                     <ChevronLeft size={16} className="mr-1 group-hover:-translate-x-1 transition-transform" /> Back to Dashboard
                 </Link>
 
                 <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between">
                     <div>
                         <h1 className="text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight drop-shadow-sm">Applicants</h1>
-                        <p className="text-indigo-600 dark:text-indigo-300 mt-1 text-lg font-medium">{job?.title} <span className="text-zinc-400 dark:text-zinc-500 mx-1">at</span> {job?.company}</p>
+                        <p className="text-blue-600 dark:text-blue-300 mt-1 text-lg font-medium">{job?.title} <span className="text-zinc-400 dark:text-zinc-500 mx-1">at</span> {job?.company}</p>
                     </div>
-                    <div className="mt-4 md:mt-0 px-4 py-2 bg-indigo-50 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 font-bold rounded-xl border border-indigo-200 dark:border-indigo-500/30 shadow-sm dark:shadow-[0_0_15px_rgba(99,102,241,0.2)]">
+                    <div className="mt-4 md:mt-0 px-4 py-2 bg-blue-50 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 font-bold rounded-xl border border-blue-200 dark:border-blue-500/30 shadow-sm dark:shadow-[0_0_15px_rgba(99,102,241,0.2)]">
                         {applications.length} Total Applicants
                     </div>
                 </div>
@@ -114,7 +114,7 @@ const JobApplicants = () => {
                                             rel="noreferrer"
                                             className="w-full sm:w-auto px-5 py-2.5 flex items-center justify-center bg-white/80 dark:bg-white/5 border border-white dark:border-white/10 text-zinc-600 dark:text-zinc-300 font-bold rounded-xl hover:bg-white dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all shadow-sm dark:shadow-none"
                                         >
-                                            <Download size={18} className="mr-2 text-indigo-600 dark:text-indigo-400" /> Resume
+                                            <Download size={18} className="mr-2 text-blue-600 dark:text-blue-400" /> Resume
                                         </a>
 
                                         <div className="flex justify-end gap-3 w-full sm:w-auto border-t sm:border-t-0 sm:border-l border-zinc-200 dark:border-white/10 pt-4 sm:pt-0 sm:pl-4">

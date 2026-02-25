@@ -69,7 +69,7 @@ const JobDetails = () => {
     if (loading) {
         return (
             <div className="flex justify-center items-center min-h-[calc(100vh-4rem)]">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
             </div>
         );
     }
@@ -100,13 +100,13 @@ const JobDetails = () => {
             {/* Header */}
             <div className="border-b border-zinc-200 dark:border-white/10 pt-8 pb-12 relative overflow-hidden bg-zinc-50/50 dark:bg-black/20">
                 {/* Decorative background gradients */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-500 blur-[2px]"></div>
-                <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[150%] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none"></div>
-                <div className="absolute bottom-[-50%] right-[-10%] w-[40%] h-[150%] bg-fuchsia-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 blur-[2px]"></div>
+                <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[150%] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+                <div className="absolute bottom-[-50%] right-[-10%] w-[40%] h-[150%] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none"></div>
 
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-                        <Link to="/jobs" className="inline-flex items-center text-sm font-bold text-zinc-500 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-white mb-6 transition-all dark:hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] group">
+                        <Link to="/jobs" className="inline-flex items-center text-sm font-bold text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-white mb-6 transition-all dark:hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] group">
                             <ChevronLeft size={16} className="mr-1 group-hover:-translate-x-1 transition-transform" /> Back to Jobs
                         </Link>
                     </motion.div>
@@ -120,7 +120,7 @@ const JobDetails = () => {
                         <div className="flex items-start gap-5">
                             <motion.div
                                 whileHover={{ scale: 1.05, rotate: 5 }}
-                                className="w-16 h-16 bg-indigo-50 dark:bg-black/40 rounded-2xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-black text-3xl border border-indigo-100 dark:border-white/5 shadow-sm dark:shadow-[0_0_15px_rgba(99,102,241,0.2)] shrink-0 group-hover:shadow-md dark:group-hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all overflow-hidden"
+                                className="w-16 h-16 bg-blue-50 dark:bg-black/40 rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 font-black text-3xl border border-blue-100 dark:border-white/5 shadow-sm dark:shadow-[0_0_15px_rgba(99,102,241,0.2)] shrink-0 group-hover:shadow-md dark:group-hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all overflow-hidden"
                             >
                                 {job.companyLogo ? (
                                     <img src={getFileUrl(job.companyLogo)} alt={`${job.company} Logo`} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
@@ -144,10 +144,10 @@ const JobDetails = () => {
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => setShowApplyModal(true)}
-                                    className="relative group overflow-hidden px-8 py-3 rounded-xl font-bold transition-all border border-indigo-200 dark:border-indigo-500/50 shadow-[0_8px_30px_rgba(99,102,241,0.1)] dark:shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.2)] dark:hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] bg-white/80 dark:bg-indigo-600/20 backdrop-blur-md"
+                                    className="relative group overflow-hidden px-8 py-3 rounded-xl font-bold transition-all border border-blue-200 dark:border-blue-500/50 shadow-[0_8px_30px_rgba(99,102,241,0.1)] dark:shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.2)] dark:hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] bg-white/80 dark:bg-blue-600/20 backdrop-blur-md"
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-fuchsia-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    <span className="relative z-10 text-indigo-600 dark:text-indigo-100 group-hover:text-white drop-shadow-md">Apply Now</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <span className="relative z-10 text-blue-600 dark:text-blue-100 group-hover:text-white drop-shadow-md">Apply Now</span>
                                 </motion.button>
                             )}
                             {isRecruiterOwner && (
@@ -155,17 +155,17 @@ const JobDetails = () => {
                                     to={`/dashboard`}
                                     className="px-6 py-3 bg-white/80 dark:bg-white/5 backdrop-blur-md border border-white/80 dark:border-white/10 text-zinc-900 dark:text-white font-bold rounded-xl hover:bg-white dark:hover:bg-white/10 hover:border-white flex items-center justify-center transition-all shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-none"
                                 >
-                                    <Users size={18} className="mr-2 text-indigo-500 dark:text-indigo-400" />
+                                    <Users size={18} className="mr-2 text-blue-500 dark:text-blue-400" />
                                     View Applicants
                                 </Link>
                             )}
                             {!user && (
                                 <Link
                                     to="/login"
-                                    className="relative group overflow-hidden px-8 py-3 rounded-xl font-bold transition-all border border-indigo-200 dark:border-indigo-500/50 shadow-[0_0_15px_rgba(99,102,241,0.1)] dark:shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:shadow-[0_0_25px_rgba(99,102,241,0.2)] dark:hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] bg-indigo-50 dark:bg-indigo-600/20 text-center"
+                                    className="relative group overflow-hidden px-8 py-3 rounded-xl font-bold transition-all border border-blue-200 dark:border-blue-500/50 shadow-[0_0_15px_rgba(99,102,241,0.1)] dark:shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:shadow-[0_0_25px_rgba(99,102,241,0.2)] dark:hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] bg-blue-50 dark:bg-blue-600/20 text-center"
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-fuchsia-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    <span className="relative z-10 text-indigo-600 dark:text-indigo-100 group-hover:text-white drop-shadow-md">Sign in to Apply</span>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <span className="relative z-10 text-blue-600 dark:text-blue-100 group-hover:text-white drop-shadow-md">Sign in to Apply</span>
                                 </Link>
                             )}
                         </div>
@@ -184,7 +184,7 @@ const JobDetails = () => {
                 <div className="lg:col-span-2 space-y-8">
                     <motion.div variants={itemVariants} className="bg-white/60 dark:bg-white/5 backdrop-blur-2xl rounded-2xl p-8 border border-white/60 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:border-white/80 dark:hover:border-white/20 transition-all">
                         <h2 className="text-xl font-extrabold text-zinc-900 dark:text-white mb-4 flex items-center">
-                            <span className="w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/30 flex justify-center items-center mr-3 shadow-sm dark:shadow-[0_0_10px_rgba(99,102,241,0.2)]">
+                            <span className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/30 flex justify-center items-center mr-3 shadow-sm dark:shadow-[0_0_10px_rgba(99,102,241,0.2)]">
                                 <Briefcase size={18} />
                             </span>
                             Job Description
@@ -198,7 +198,7 @@ const JobDetails = () => {
                         <h2 className="text-xl font-extrabold text-zinc-900 dark:text-white mb-4">Required Skills</h2>
                         <div className="flex flex-wrap gap-2.5">
                             {job.skills?.length > 0 ? job.skills.map((skill, index) => (
-                                <span key={index} className="px-4 py-2 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 font-bold rounded-xl border border-indigo-200 dark:border-indigo-500/30 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition-colors shadow-sm dark:shadow-[0_0_10px_rgba(99,102,241,0.1)] cursor-default">
+                                <span key={index} className="px-4 py-2 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-300 font-bold rounded-xl border border-blue-200 dark:border-blue-500/30 hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-colors shadow-sm dark:shadow-[0_0_10px_rgba(99,102,241,0.1)] cursor-default">
                                     {skill}
                                 </span>
                             )) : <span className="text-zinc-500 font-medium">Not specified</span>}
@@ -212,7 +212,7 @@ const JobDetails = () => {
                         <h3 className="text-lg font-extrabold text-zinc-900 dark:text-white mb-5 border-b border-zinc-200 dark:border-white/10 pb-3 drop-shadow-sm">Job Overview</h3>
                         <div className="space-y-5">
                             <div className="flex items-start">
-                                <span className="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-500/20 border border-indigo-200 dark:border-indigo-500/30 flex items-center justify-center mr-4 shrink-0 text-indigo-600 dark:text-indigo-400 shadow-sm dark:shadow-[0_0_10px_rgba(99,102,241,0.2)]">
+                                <span className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-500/20 border border-blue-200 dark:border-blue-500/30 flex items-center justify-center mr-4 shrink-0 text-blue-600 dark:text-blue-400 shadow-sm dark:shadow-[0_0_10px_rgba(99,102,241,0.2)]">
                                     <Briefcase size={20} />
                                 </span>
                                 <div>
@@ -230,7 +230,7 @@ const JobDetails = () => {
                                 </div>
                             </div>
                             <div className="flex items-start">
-                                <span className="w-10 h-10 rounded-full bg-fuchsia-100 dark:bg-fuchsia-500/20 border border-fuchsia-200 dark:border-fuchsia-500/30 flex items-center justify-center mr-4 shrink-0 text-fuchsia-600 dark:text-fuchsia-400 shadow-sm dark:shadow-[0_0_10px_rgba(217,70,239,0.2)]">
+                                <span className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-500/20 border border-purple-200 dark:border-purple-500/30 flex items-center justify-center mr-4 shrink-0 text-purple-600 dark:text-purple-400 shadow-sm dark:shadow-[0_0_10px_rgba(217,70,239,0.2)]">
                                     <DollarSign size={20} />
                                 </span>
                                 <div>
@@ -273,8 +273,8 @@ const JobDetails = () => {
                             className="bg-white/80 dark:bg-zinc-900/90 backdrop-blur-3xl border border-white/60 dark:border-white/10 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_0_40px_rgba(0,0,0,0.5)] w-full max-w-md p-6 relative overflow-hidden"
                         >
                             {/* Decorative modal glow */}
-                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-indigo-500/20 rounded-full blur-3xl"></div>
-                            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-fuchsia-500/20 rounded-full blur-3xl"></div>
+                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl"></div>
+                            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl"></div>
 
                             <div className="flex justify-between items-center mb-6 relative z-10">
                                 <h3 className="text-xl font-bold text-zinc-900 dark:text-white drop-shadow-sm">Apply for this Job</h3>
@@ -288,17 +288,17 @@ const JobDetails = () => {
                                     <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2 flex items-center">
                                         Upload Resume (PDF, DOC, DOCX) <span className="text-red-500 ml-1 text-2xl leading-none">*</span>
                                     </label>
-                                    <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-zinc-300 dark:border-zinc-700 hover:border-indigo-500/50 border-dashed rounded-xl bg-zinc-50 dark:bg-black/30 hover:bg-zinc-100 dark:hover:bg-black/40 transition-all shadow-inner">
+                                    <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-zinc-300 dark:border-zinc-700 hover:border-blue-500/50 border-dashed rounded-xl bg-zinc-50 dark:bg-black/30 hover:bg-zinc-100 dark:hover:bg-black/40 transition-all shadow-inner">
                                         <div className="space-y-1 text-center">
-                                            <Upload className="mx-auto h-10 w-10 text-indigo-500/70 dark:text-indigo-400/70 shadow-none dark:drop-shadow-[0_0_5px_rgba(99,102,241,0.3)]" />
+                                            <Upload className="mx-auto h-10 w-10 text-blue-500/70 dark:text-blue-400/70 shadow-none dark:drop-shadow-[0_0_5px_rgba(99,102,241,0.3)]" />
                                             <div className="flex text-sm text-zinc-500 dark:text-zinc-400 justify-center">
-                                                <label htmlFor="file-upload" className="relative cursor-pointer rounded-md font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 focus-within:outline-none flex justify-center items-center">
+                                                <label htmlFor="file-upload" className="relative cursor-pointer rounded-md font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 focus-within:outline-none flex justify-center items-center">
                                                     <span className="px-2 drop-shadow-sm">Click to select a file</span>
                                                     <input id="file-upload" name="file-upload" type="file" className="sr-only" accept=".pdf,.doc,.docx" onChange={(e) => setFile(e.target.files[0])} />
                                                 </label>
                                             </div>
                                             <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-2 font-medium">
-                                                {file ? <span className="text-fuchsia-600 dark:text-fuchsia-400 font-bold drop-shadow-sm">{file.name}</span> : "File should be < 5MB"}
+                                                {file ? <span className="text-purple-600 dark:text-purple-400 font-bold drop-shadow-sm">{file.name}</span> : "File should be < 5MB"}
                                             </p>
                                         </div>
                                     </div>
@@ -307,9 +307,9 @@ const JobDetails = () => {
                                 <button
                                     type="submit"
                                     disabled={!file || applying}
-                                    className="w-full relative group overflow-hidden bg-indigo-50 dark:bg-indigo-600/20 border border-indigo-200 dark:border-indigo-500/50 text-indigo-600 dark:text-indigo-100 font-bold py-3 rounded-xl hover:shadow-md dark:hover:shadow-[0_0_15px_rgba(99,102,241,0.4)] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="w-full relative group overflow-hidden bg-blue-50 dark:bg-blue-600/20 border border-blue-200 dark:border-blue-500/50 text-blue-600 dark:text-blue-100 font-bold py-3 rounded-xl hover:shadow-md dark:hover:shadow-[0_0_15px_rgba(99,102,241,0.4)] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-fuchsia-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                     <span className="relative z-10 group-hover:text-white transition-colors">{applying ? 'Submitting Application...' : 'Submit Application'}</span>
                                 </button>
                             </form>

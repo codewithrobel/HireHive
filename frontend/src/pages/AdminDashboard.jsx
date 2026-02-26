@@ -204,8 +204,8 @@ const AdminDashboard = () => {
                                     {jobs.map((job) => (
                                         <tr key={job._id} className="border-b border-zinc-100 dark:border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50/50 dark:hover:bg-white transition-colors">
                                             <td className="py-4 px-6 text-zinc-900 dark:text-white font-medium">{job.title}</td>
-                                            <td className="py-4 px-6 text-zinc-500 dark:text-zinc-400">{job.companyName}</td>
-                                            <td className="py-4 px-6 text-zinc-500 dark:text-zinc-400">{job.employerId?.name || 'Unknown'}</td>
+                                            <td className="py-4 px-6 text-zinc-500 dark:text-zinc-400">{job.company}</td>
+                                            <td className="py-4 px-6 text-zinc-500 dark:text-zinc-400">{job.postedBy?.name || 'Unknown'}</td>
                                             <td className="py-4 px-6 text-right">
                                                 <button
                                                     onClick={() => handleDeleteJob(job._id)}

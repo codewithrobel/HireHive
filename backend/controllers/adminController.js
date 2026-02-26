@@ -26,8 +26,8 @@ export const deleteUser = asyncHandler(async (req, res) => {
         }
 
         // Also delete any jobs and applications associated with this user if they are a recruiter or seeker
-        await Job.deleteMany({ employerId: user._id });
-        await Application.deleteMany({ applicantId: user._id });
+        await Job.deleteMany({ postedBy: user._id });
+        await Application.deleteMany({ applicant: user._id });
 
         await user.deleteOne();
         res.json({ message: 'User removed successfully' });
@@ -42,7 +42,7 @@ export const deleteUser = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 export const getJobs = asyncHandler(async (req, res) => {
     // Populate employer details so admin can see who posted what
-    const jobs = await Job.find({}).populate('employerId', 'name email').sort({ createdAt: -1 });
+    const jobs = await Job.find({}).populate('postedBy', 'name email').sort({ createdAt: -1 });
     res.json(jobs);
 });
 
@@ -54,7 +54,7 @@ export const deleteJob = asyncHandler(async (req, res) => {
 
     if (job) {
         // Delete all applications for this job as well
-        await Application.deleteMany({ jobId: job._id });
+        await Application.deleteMany({ job: job._id });
 
         await job.deleteOne();
         res.json({ message: 'Job removed successfully' });

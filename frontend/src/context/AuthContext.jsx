@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
             clearTimeout(inactivityLogoutTimer.current);
         }
 
-        // 15 minutes (15 * 60 * 1000 = 900000 ms)
+        // 1 minute (1 * 60 * 1000 = 60000 ms)
         inactivityLogoutTimer.current = setTimeout(() => {
             if (user) {
                 logout();
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
                     },
                 });
             }
-        }, 900000);
+        }, 60000);
     }, [user]);
 
     useEffect(() => {
@@ -61,6 +61,20 @@ export const AuthProvider = ({ children }) => {
             resetInactivityTimer();
         };
 
+        const handleVisibilityChange = () => {
+            if (document.hidden && user) {
+                logout();
+                toast('You have been logged out for security because you switched tabs.', {
+                    icon: '🔒',
+                    style: {
+                        borderRadius: '10px',
+                        background: '#3f3f46',
+                        color: '#fff',
+                    },
+                });
+            }
+        };
+
         // Initialize the timer
         resetInactivityTimer();
 
@@ -68,6 +82,7 @@ export const AuthProvider = ({ children }) => {
         events.forEach(event => {
             window.addEventListener(event, handleActivity);
         });
+        document.addEventListener('visibilitychange', handleVisibilityChange);
 
         // Cleanup
         return () => {
@@ -77,6 +92,7 @@ export const AuthProvider = ({ children }) => {
             events.forEach(event => {
                 window.removeEventListener(event, handleActivity);
             });
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
     }, [user, resetInactivityTimer]);
     // ----------------------------------------------

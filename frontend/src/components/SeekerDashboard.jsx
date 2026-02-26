@@ -128,16 +128,15 @@ const SeekerDashboard = () => {
         >
             <div className="lg:col-span-1 space-y-6">
                 <motion.div variants={itemVariants} className="bg-white dark:bg-zinc-800 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-sm dark:border-zinc-200 p-6 hover:border-white dark:hover:border-zinc-200 hover:bg-white transition-all relative overflow-hidden group">
-                    
+
                     <div className="relative z-10 flex items-center space-x-4 mb-6">
                         <div className="relative group/avatar">
                             {user?.profilePicture ? (
-                                <img src={getFileUrl(user.profilePicture)} alt="Profile" className="w-16 h-16 rounded-full object-cover border-2 border-blue-200 dark:border-blue-200 dark:border-blue-800 shadow-sm" />
-                            ) : (
-                                <div className="bg-blue-50 dark:bg-zinc-800 p-3 rounded-full text-blue-600 dark:text-blue-400 shadow-sm border border-blue-100 dark:border-zinc-200 dark:border-zinc-800 w-16 h-16 flex items-center justify-center">
-                                    <UserCircle size={32} />
-                                </div>
-                            )}
+                                <img src={getFileUrl(user.profilePicture)} alt="Profile" className="w-16 h-16 rounded-full object-cover border-2 border-zinc-200 dark:border-zinc-700 shadow-sm" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }} />
+                            ) : null}
+                            <div className="bg-zinc-100 dark:bg-zinc-800 p-3 rounded-full text-zinc-600 dark:text-zinc-400 shadow-sm border border-zinc-200 dark:border-zinc-700 w-16 h-16 flex items-center justify-center font-bold text-xl" style={{ display: user?.profilePicture ? 'none' : 'flex' }}>
+                                {user?.name ? user.name.charAt(0).toUpperCase() : <UserCircle size={32} />}
+                            </div>
                         </div>
                         <div>
                             <h2 className="text-xl font-extrabold text-zinc-900 dark:text-white drop-shadow-sm">{user.name || 'My Profile'}</h2>
@@ -271,7 +270,7 @@ const SeekerDashboard = () => {
                             disabled={!file || uploading}
                             className="w-full hover:bg-blue-600 hover:text-white transition-colors border border-blue-200 bg-blue-50 text-blue-600 dark:bg-blue-600/20 dark:text-blue-100  dark:bg-blue-600/20  dark:border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-100 py-3 rounded-lg font-bold transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-md dark:hover:shadow-sm"
                         >
-                            
+
                             <span className="relative z-10 flex items-center group-hover:text-white transition-colors">
                                 {uploading ? 'Uploading...' : <><Upload size={18} className="mr-2" /> Upload CV</>}
                             </span>

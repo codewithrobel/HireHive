@@ -82,7 +82,12 @@ const Navbar = () => {
                                 <Link to="/dashboard" className="flex items-center gap-2 group">
                                     <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-transparent group-hover:border-blue-200 dark:border-blue-800 transition-all">
                                         {user.profilePicture ? (
-                                            <img src={getFileUrl(user.profilePicture)} className="w-full h-full object-cover" alt="Profile" />
+                                            <>
+                                                <img src={getFileUrl(user.profilePicture)} className="w-full h-full object-cover" alt="Profile" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }} />
+                                                <div className="w-full h-full bg-blue-100 dark:bg-blue-900/40 hidden items-center justify-center text-blue-500 font-bold">
+                                                    {user.name.charAt(0).toUpperCase()}
+                                                </div>
+                                            </>
                                         ) : (
                                             <div className="w-full h-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-500">
                                                 <UserCircle size={24} />

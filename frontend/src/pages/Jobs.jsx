@@ -47,10 +47,10 @@ const Jobs = () => {
 
     return (
         <div className="min-h-screen pb-12 overflow-x-hidden text-zinc-700 dark:text-zinc-300">
-            <div className="py-24 px-4 sm:px-6 lg:px-8 border-b border-zinc-200 dark:border-white/10 relative overflow-hidden">
+            <div className="py-24 px-4 sm:px-6 lg:px-8 border-b border-zinc-200 dark:border-zinc-800 relative overflow-hidden">
                 {/* Decorative background circles */}
-                <div className="absolute top-0 left-1/4 w-[40rem] h-[40rem] bg-blue-500/10 rounded-full blur-3xl transform -translate-y-1/2"></div>
-                <div className="absolute bottom-0 right-1/4 w-[30rem] h-[30rem] bg-purple-500/10 rounded-full blur-3xl transform translate-y-1/2"></div>
+                
+                
 
                 <div className="max-w-7xl mx-auto relative z-10">
                     <motion.h1
@@ -74,10 +74,10 @@ const Jobs = () => {
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.3, type: "spring" }}
-                        className="bg-white/60 dark:bg-white/5 backdrop-blur-2xl p-3 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-2xl max-w-4xl mx-auto flex flex-col gap-3 border border-white/60 dark:border-white/10 relative z-20"
+                        className="bg-white dark:bg-zinc-800 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-3 rounded-lg shadow-sm dark:shadow-2xl max-w-4xl mx-auto flex flex-col gap-3 dark:border-zinc-200 relative z-20"
                     >
                         <div className="flex flex-col md:flex-row gap-3">
-                            <div className="flex-1 flex items-center px-4 bg-white/70 dark:bg-black/20 rounded-xl border border-white dark:border-white/5 focus-within:border-blue-400 focus-within:bg-white dark:focus-within:border-blue-500/50 dark:focus-within:bg-black/40 focus-within:shadow-[0_0_15px_rgba(99,102,241,0.15)] transition-all duration-300 shadow-sm dark:shadow-none">
+                            <div className="flex-1 flex items-center px-4 bg-white dark:bg-zinc-800 rounded-lg border border-white dark:border-zinc-200 dark:border-zinc-800 focus-within:border-blue-400 focus-within:bg-white dark:focus-within:border-blue-200 dark:border-blue-800 dark:focus-within:bg-black/40 focus-within:shadow-sm transition-all duration-300 shadow-sm dark:shadow-none">
                                 <Search className="text-blue-400" size={20} />
                                 <input
                                     type="text"
@@ -87,7 +87,7 @@ const Jobs = () => {
                                     onChange={(e) => { setKeyword(e.target.value); setPage(1); }}
                                 />
                             </div>
-                            <div className="flex-1 flex items-center px-4 bg-white/70 dark:bg-black/20 rounded-xl border border-white dark:border-white/5 focus-within:border-blue-400 focus-within:bg-white dark:focus-within:border-blue-500/50 dark:focus-within:bg-black/40 focus-within:shadow-[0_0_15px_rgba(99,102,241,0.15)] transition-all duration-300 shadow-sm dark:shadow-none">
+                            <div className="flex-1 flex items-center px-4 bg-white dark:bg-zinc-800 rounded-lg border border-white dark:border-zinc-200 dark:border-zinc-800 focus-within:border-blue-400 focus-within:bg-white dark:focus-within:border-blue-200 dark:border-blue-800 dark:focus-within:bg-black/40 focus-within:shadow-sm transition-all duration-300 shadow-sm dark:shadow-none">
                                 <MapPin className="text-blue-400" size={20} />
                                 <input
                                     type="text"
@@ -98,7 +98,7 @@ const Jobs = () => {
                                 />
                             </div>
                             <select
-                                className="bg-white/70 dark:bg-black/20 rounded-xl px-4 py-3.5 outline-none text-zinc-900 dark:text-white border border-white dark:border-white/5 focus:border-blue-400 focus:bg-white dark:focus:border-blue-500/50 dark:focus:bg-black/40 focus:shadow-[0_0_15px_rgba(99,102,241,0.15)] transition-all duration-300 md:w-48 appearance-none cursor-pointer font-semibold shadow-sm dark:shadow-none"
+                                className="bg-white dark:bg-zinc-800 rounded-lg px-4 py-3.5 outline-none text-zinc-900 dark:text-white border border-white dark:border-zinc-200 dark:border-zinc-800 focus:border-blue-400 focus:bg-white dark:focus:border-blue-200 dark:border-blue-800 dark:focus:bg-black/40 focus:shadow-sm transition-all duration-300 md:w-48 appearance-none cursor-pointer font-semibold shadow-sm dark:shadow-none"
                                 value={type}
                                 onChange={(e) => { setType(e.target.value); setPage(1); }}
                             >
@@ -116,7 +116,7 @@ const Jobs = () => {
                                 animate={{ opacity: 1, height: 'auto' }}
                                 className="flex flex-col md:flex-row gap-3"
                             >
-                                <div className="flex-1 flex items-center px-4 bg-white/70 dark:bg-black/20 rounded-xl border border-white dark:border-white/5 focus-within:border-blue-400 focus-within:bg-white dark:focus-within:border-blue-500/50 dark:focus-within:bg-black/40 focus-within:shadow-[0_0_15px_rgba(99,102,241,0.15)] transition-all duration-300 shadow-sm dark:shadow-none">
+                                <div className="flex-1 flex items-center px-4 bg-white dark:bg-zinc-800 rounded-lg border border-white dark:border-zinc-200 dark:border-zinc-800 focus-within:border-blue-400 focus-within:bg-white dark:focus-within:border-blue-200 dark:border-blue-800 dark:focus-within:bg-black/40 focus-within:shadow-sm transition-all duration-300 shadow-sm dark:shadow-none">
                                     <input
                                         type="text"
                                         placeholder="Skills (e.g. React, Node.js)"
@@ -125,7 +125,7 @@ const Jobs = () => {
                                         onChange={(e) => { setSkills(e.target.value); setPage(1); }}
                                     />
                                 </div>
-                                <div className="flex-1 flex items-center px-4 bg-white/70 dark:bg-black/20 rounded-xl border border-white dark:border-white/5 focus-within:border-blue-400 focus-within:bg-white dark:focus-within:border-blue-500/50 dark:focus-within:bg-black/40 focus-within:shadow-[0_0_15px_rgba(99,102,241,0.15)] transition-all duration-300 shadow-sm dark:shadow-none">
+                                <div className="flex-1 flex items-center px-4 bg-white dark:bg-zinc-800 rounded-lg border border-white dark:border-zinc-200 dark:border-zinc-800 focus-within:border-blue-400 focus-within:bg-white dark:focus-within:border-blue-200 dark:border-blue-800 dark:focus-within:bg-black/40 focus-within:shadow-sm transition-all duration-300 shadow-sm dark:shadow-none">
                                     <span className="text-zinc-400 font-semibold pl-2">$</span>
                                     <input
                                         type="number"
@@ -145,7 +145,7 @@ const Jobs = () => {
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-8 md:mb-10">
                     <h2 className="text-2xl md:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight flex items-center flex-wrap gap-2">
                         Latest Opportunities
-                        <span className="px-3 py-1 bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30 text-xs font-bold rounded-full shadow-sm">
+                        <span className="px-3 py-1 bg-blue-50 dark:bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-200 dark:border-blue-800 text-xs font-bold rounded-full shadow-sm">
                             {jobs.length} Results
                         </span>
                     </h2>
@@ -153,7 +153,7 @@ const Jobs = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setShowFilters(!showFilters)}
-                        className="flex items-center text-sm font-bold text-zinc-600 dark:text-zinc-300 bg-white dark:bg-white/5 px-5 py-2.5 rounded-xl border border-zinc-200 dark:border-white/10 hover:bg-zinc-50 dark:hover:bg-white/10 transition-all shadow-sm w-full sm:w-auto justify-center"
+                        className="flex items-center text-sm font-bold text-zinc-600 dark:text-zinc-300 bg-white dark:bg-zinc-800 px-5 py-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-white transition-all shadow-sm w-full sm:w-auto justify-center"
                     >
                         <SlidersHorizontal size={16} className="mr-2 text-blue-500 dark:text-blue-400" /> Filters
                     </motion.button>
@@ -161,18 +161,18 @@ const Jobs = () => {
 
                 {loading ? (
                     <div className="flex justify-center items-center py-32">
-                        <Loader className="animate-spin text-blue-500 drop-shadow-[0_0_8px_rgba(99,102,241,0.8)]" size={40} />
+                        <Loader className="animate-spin text-blue-500 drop-shadow-sm" size={40} />
                     </div>
                 ) : jobs.length === 0 ? (
-                    <div className="text-center py-32 bg-white dark:bg-white/5 backdrop-blur-md rounded-3xl border border-zinc-200 dark:border-white/10 shadow-xl">
-                        <div className="bg-blue-50 dark:bg-blue-500/20 shadow-sm dark:shadow-[0_0_20px_rgba(99,102,241,0.2)] w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 border border-blue-200 dark:border-blue-500/30">
+                    <div className="text-center py-32 bg-white dark:bg-zinc-800 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg dark:border-zinc-200 shadow-xl">
+                        <div className="bg-blue-50 dark:bg-blue-100 dark:bg-blue-900/40 shadow-sm w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 border border-blue-200 dark:border-blue-200 dark:border-blue-800">
                             <Search className="text-blue-500 dark:text-blue-400" size={32} />
                         </div>
                         <h3 className="text-xl font-bold text-zinc-900 dark:text-white">No jobs found</h3>
                         <p className="text-zinc-500 dark:text-zinc-400 mt-2 text-lg">Try adjusting your search or filters to find what you're looking for.</p>
                         <button
                             onClick={() => { setKeyword(''); setLocation(''); setType(''); setSkills(''); setMinSalary(''); }}
-                            className="mt-8 px-6 py-2.5 bg-blue-50 dark:bg-blue-600/20 border border-blue-200 dark:border-blue-500/50 text-blue-600 dark:text-blue-300 rounded-xl font-bold hover:bg-blue-100 dark:hover:bg-blue-600/40 hover:text-blue-800 dark:hover:text-white transition-all shadow-sm dark:shadow-[0_0_10px_rgba(99,102,241,0.3)]"
+                            className="mt-8 px-6 py-2.5 bg-blue-50 dark:bg-blue-600/20 border border-blue-200 dark:border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-300 rounded-lg font-bold hover:bg-blue-100 dark:hover:bg-blue-600/40 hover:text-blue-800 dark:hover:text-white transition-all shadow-sm"
                         >
                             Clear all filters
                         </button>
@@ -190,7 +190,7 @@ const Jobs = () => {
                                 <button
                                     disabled={page === 1}
                                     onClick={() => setPage(p => Math.max(1, p - 1))}
-                                    className="px-5 py-2.5 border border-zinc-200 dark:border-white/10 rounded-xl bg-white dark:bg-white/5 backdrop-blur-sm text-zinc-600 dark:text-zinc-300 font-bold hover:bg-zinc-50 dark:hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed shadow-sm transition-colors"
+                                    className="px-5 py-2.5 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-800 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 font-bold hover:bg-zinc-50 dark:hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed shadow-sm transition-colors"
                                 >
                                     Previous
                                 </button>
@@ -200,7 +200,7 @@ const Jobs = () => {
                                 <button
                                     disabled={page === totalPages}
                                     onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                                    className="px-5 py-2.5 border border-zinc-200 dark:border-white/10 rounded-xl bg-white dark:bg-white/5 backdrop-blur-sm text-zinc-600 dark:text-zinc-300 font-bold hover:bg-zinc-50 dark:hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed shadow-sm transition-colors"
+                                    className="px-5 py-2.5 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-800 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 font-bold hover:bg-zinc-50 dark:hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed shadow-sm transition-colors"
                                 >
                                     Next
                                 </button>

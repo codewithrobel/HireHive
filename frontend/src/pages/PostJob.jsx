@@ -53,10 +53,10 @@ const PostJob = () => {
 
     return (
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-            <div className="bg-white/5 backdrop-blur-2xl rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.3)] border border-white/10 p-8 relative overflow-hidden">
+            <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-sm p-8 relative overflow-hidden">
                 {/* Decorative glows */}
-                <div className="absolute -top-32 -right-32 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
-                <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                
+                
 
                 <div className="mb-8 relative z-10">
                     <h1 className="text-3xl font-extrabold text-white drop-shadow-sm tracking-tight">Post a New Job</h1>
@@ -69,7 +69,7 @@ const PostJob = () => {
                             <label className="block text-sm font-semibold text-zinc-300 mb-1.5 ml-1">Job Title</label>
                             <input
                                 type="text"
-                                className="w-full px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
+                                className="w-full px-4 py-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-200 dark:border-blue-800 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
                                 placeholder="e.g. Senior React Developer"
                                 {...register('title', { required: 'Required' })}
                             />
@@ -80,7 +80,7 @@ const PostJob = () => {
                             <label className="block text-sm font-semibold text-zinc-300 mb-1.5 ml-1">Company Name</label>
                             <input
                                 type="text"
-                                className="w-full px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
+                                className="w-full px-4 py-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-200 dark:border-blue-800 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
                                 placeholder="Acme Corp"
                                 {...register('company', { required: 'Required' })}
                             />
@@ -90,7 +90,7 @@ const PostJob = () => {
                         <div>
                             <label className="block text-sm font-semibold text-zinc-300 mb-1.5 ml-1">Company Logo</label>
                             <div className="flex items-center space-x-4">
-                                <div className="w-14 h-14 rounded-xl bg-black/20 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+                                <div className="w-14 h-14 rounded-lg bg-black/20 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center overflow-hidden shrink-0">
                                     {logoPreview ? (
                                         <img src={logoPreview} alt="Logo Preview" className="w-full h-full object-cover" />
                                     ) : (
@@ -98,7 +98,7 @@ const PostJob = () => {
                                     )}
                                 </div>
                                 <label className="flex-1 cursor-pointer">
-                                    <div className="w-full px-4 py-3.5 rounded-xl border border-white/10 hover:border-blue-500/50 bg-black/20 hover:bg-black/40 text-zinc-400 transition-all font-medium shadow-inner text-center">
+                                    <div className="w-full px-4 py-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-blue-200 dark:border-blue-800 bg-black/20 hover:bg-black/40 text-zinc-400 transition-all font-medium shadow-inner text-center">
                                         Select Image...
                                     </div>
                                     <input
@@ -115,7 +115,7 @@ const PostJob = () => {
                             <label className="block text-sm font-semibold text-zinc-300 mb-1.5 ml-1">Location</label>
                             <input
                                 type="text"
-                                className="w-full px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
+                                className="w-full px-4 py-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-200 dark:border-blue-800 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
                                 placeholder="e.g. New York, NY or Remote"
                                 {...register('location', { required: 'Required' })}
                             />
@@ -125,7 +125,7 @@ const PostJob = () => {
                             <label className="block text-sm font-semibold text-zinc-300 mb-1.5 ml-1">Salary Amount (Annual)</label>
                             <div className="flex gap-2">
                                 <select
-                                    className="w-1/3 px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 bg-black/20 focus:bg-black/40 text-white transition-all font-medium appearance-none shadow-inner"
+                                    className="w-1/3 px-4 py-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-200 dark:border-blue-800 bg-black/20 focus:bg-black/40 text-white transition-all font-medium appearance-none shadow-inner"
                                     {...register('currency')}
                                 >
                                     <option value="INR" className="bg-zinc-900 text-white">INR (₹)</option>
@@ -133,7 +133,7 @@ const PostJob = () => {
                                 </select>
                                 <input
                                     type="number"
-                                    className="w-2/3 px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
+                                    className="w-2/3 px-4 py-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-200 dark:border-blue-800 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
                                     placeholder="e.g. 1200000"
                                     {...register('salary', { required: 'Required', min: 0 })}
                                 />
@@ -143,7 +143,7 @@ const PostJob = () => {
                         <div>
                             <label className="block text-sm font-semibold text-zinc-300 mb-1.5 ml-1">Job Type</label>
                             <select
-                                className="w-full px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 bg-black/20 focus:bg-black/40 text-white transition-all font-medium shadow-inner appearance-none relative"
+                                className="w-full px-4 py-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-200 dark:border-blue-800 bg-black/20 focus:bg-black/40 text-white transition-all font-medium shadow-inner appearance-none relative"
                                 {...register('type')}
                             >
                                 <option value="Full-time" className="bg-zinc-900 text-white">Full-time</option>
@@ -158,7 +158,7 @@ const PostJob = () => {
                             <label className="block text-sm font-semibold text-zinc-300 mb-1.5 ml-1">Application Deadline</label>
                             <input
                                 type="date"
-                                className="w-full px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
+                                className="w-full px-4 py-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-200 dark:border-blue-800 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
                                 {...register('deadline')}
                             />
                         </div>
@@ -167,7 +167,7 @@ const PostJob = () => {
                             <label className="block text-sm font-semibold text-zinc-300 mb-1.5 ml-1">Experience Level</label>
                             <input
                                 type="text"
-                                className="w-full px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
+                                className="w-full px-4 py-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-200 dark:border-blue-800 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
                                 placeholder="e.g. 3-5 years"
                                 {...register('experience')}
                             />
@@ -178,7 +178,7 @@ const PostJob = () => {
                         <label className="block text-sm font-semibold text-zinc-300 mb-1.5 ml-1">Required Skills (comma-separated)</label>
                         <input
                             type="text"
-                            className="w-full px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
+                            className="w-full px-4 py-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-200 dark:border-blue-800 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner"
                             placeholder="React, Node.js, MongoDB"
                             {...register('skills')}
                         />
@@ -188,18 +188,18 @@ const PostJob = () => {
                         <label className="block text-sm font-semibold text-zinc-300 mb-1.5 ml-1">Job Description</label>
                         <textarea
                             rows="6"
-                            className="w-full px-4 py-3.5 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner resize-y"
+                            className="w-full px-4 py-3.5 rounded-lg border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-200 dark:border-blue-800 bg-black/20 focus:bg-black/40 text-white placeholder-zinc-500 transition-all font-medium shadow-inner resize-y"
                             placeholder="Describe the role, responsibilities, and requirements..."
                             {...register('description', { required: 'Required' })}
                         ></textarea>
                     </div>
 
-                    <div className="flex justify-end pt-6 space-x-4 border-t border-white/10 mt-8">
+                    <div className="flex justify-end pt-6 space-x-4 border-t border-zinc-200 dark:border-zinc-800 mt-8">
                         <button type="button" onClick={() => navigate('/dashboard')} className="px-6 py-3 font-bold text-zinc-400 hover:text-white transition-colors">
                             Cancel
                         </button>
-                        <button type="submit" className="relative group overflow-hidden px-8 py-3 rounded-xl font-bold transition-all border border-blue-500/50 shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] bg-blue-600/20">
-                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <button type="submit" className="hover:bg-blue-600 hover:text-white transition-colors border border-blue-200 bg-blue-50 text-blue-600 dark:bg-blue-600/20 dark:text-blue-100 px-8 py-3 rounded-lg font-bold transition-all  dark:border-blue-800 shadow-sm hover:shadow-sm bg-blue-600/20">
+                            
                             <span className="relative z-10 text-blue-100 group-hover:text-white drop-shadow-md transition-colors">Post Job</span>
                         </button>
                     </div>

@@ -27,7 +27,7 @@ const Navbar = () => {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="border-b bg-white/70 dark:bg-zinc-950/70 backdrop-blur-2xl border-white/50 dark:border-white/10 shadow-sm sticky top-0 z-[60] transition-all duration-300"
+            className="border-b bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 dark:border-zinc-200 shadow-sm sticky top-0 z-[60] transition-all duration-300"
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-20 items-center">
@@ -38,10 +38,10 @@ const Navbar = () => {
                         className="flex items-center"
                     >
                         <Link to="/" className="flex-shrink-0 flex items-center gap-2 group relative">
-                            <div className="relative p-2 bg-blue-50 dark:bg-blue-500/10 rounded-xl border border-blue-100 dark:border-blue-500/20 group-hover:bg-blue-100 dark:group-hover:bg-blue-500/20 transition-all shadow-sm">
+                            <div className="relative p-2 bg-blue-50 dark:bg-blue-100 dark:bg-blue-900/40 rounded-lg border border-blue-100 dark:border-blue-200 dark:border-blue-800 group-hover:bg-blue-100 dark:group-hover:bg-blue-100 transition-all shadow-sm">
                                 <Briefcase className="h-6 w-6 text-blue-500 dark:text-blue-400" />
                             </div>
-                            <span className="font-black text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-500 to-blue-400 dark:from-white dark:via-blue-200 dark:to-blue-400 tracking-tight">
+                            <span className="font-black text-2xl text-zinc-900 dark:text-white dark:from-white dark:via-blue-200 dark:to-blue-400 tracking-tight">
                                 HireHive
                             </span>
                         </Link>
@@ -59,14 +59,14 @@ const Navbar = () => {
                             </Link>
                         ))}
 
-                        <div className="h-6 w-px bg-zinc-200 dark:bg-white/10 mx-2"></div>
+                        <div className="h-6 w-px bg-zinc-200 dark:bg-zinc-800 mx-2"></div>
 
                         {user?.role === 'admin' && (
                             <Link
                                 to="/admin"
-                                className={`text-sm font-black px-4 py-2 rounded-xl border transition-all ${location.pathname === '/admin'
+                                className={`text-sm font-black px-4 py-2 rounded-lg border transition-all ${location.pathname === '/admin'
                                     ? 'bg-blue-600 text-white border-blue-600 shadow-md'
-                                    : 'text-blue-600 dark:text-blue-400 border-blue-100 dark:border-blue-500/20 bg-blue-50/50 dark:bg-blue-500/5 hover:bg-blue-100 dark:hover:bg-blue-500/10'}`}
+                                    : 'text-blue-600 dark:text-blue-400 border-blue-100 dark:border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-100 dark:bg-blue-900/40 hover:bg-blue-100 dark:hover:bg-blue-100 dark:bg-blue-900/40'}`}
                             >
                                 Admin Panel
                             </Link>
@@ -74,7 +74,7 @@ const Navbar = () => {
 
                         <button
                             onClick={toggleTheme}
-                            className="p-2.5 rounded-xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-white/10 transition-all"
+                            className="p-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-white transition-all"
                         >
                             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
                         </button>
@@ -82,11 +82,11 @@ const Navbar = () => {
                         {user ? (
                             <div className="flex items-center gap-4">
                                 <Link to="/dashboard" className="flex items-center gap-2 group">
-                                    <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-transparent group-hover:border-blue-500/50 transition-all">
+                                    <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-transparent group-hover:border-blue-200 dark:border-blue-800 transition-all">
                                         {user.profilePicture ? (
                                             <img src={getFileUrl(user.profilePicture)} className="w-full h-full object-cover" alt="Profile" />
                                         ) : (
-                                            <div className="w-full h-full bg-blue-500/10 flex items-center justify-center text-blue-500">
+                                            <div className="w-full h-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-500">
                                                 <UserCircle size={24} />
                                             </div>
                                         )}
@@ -98,7 +98,7 @@ const Navbar = () => {
 
                                 <button
                                     onClick={logout}
-                                    className="px-5 py-2.5 rounded-xl bg-zinc-900 dark:bg-white text-zinc-50 dark:text-zinc-900 text-sm font-bold hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all shadow-md active:scale-95"
+                                    className="px-5 py-2.5 rounded-lg bg-zinc-900 dark:bg-white text-zinc-50 dark:text-zinc-900 text-sm font-bold hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all shadow-md active:scale-95"
                                 >
                                     Log Out
                                 </button>
@@ -108,7 +108,7 @@ const Navbar = () => {
                                 <Link to="/login" className="px-5 py-2.5 text-sm font-bold text-zinc-600 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-white transition-colors">
                                     Login
                                 </Link>
-                                <Link to="/register" className="px-6 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/25 active:scale-95">
+                                <Link to="/register" className="px-6 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-bold hover:bg-blue-700 transition-all shadow-lg hover:shadow-sm active:scale-95">
                                     Sign Up
                                 </Link>
                             </div>
@@ -119,13 +119,13 @@ const Navbar = () => {
                     <div className="flex md:hidden items-center gap-3">
                         <button
                             onClick={toggleTheme}
-                            className="p-2.5 rounded-xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-zinc-300"
+                            className="p-2.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300"
                         >
                             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                         </button>
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="p-2.5 rounded-xl bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 focus:outline-none"
+                            className="p-2.5 rounded-lg bg-blue-50 dark:bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 focus:outline-none"
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
@@ -140,7 +140,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden border-t border-zinc-100 dark:border-white/5 bg-white dark:bg-zinc-950 overflow-hidden"
+                        className="md:hidden border-t border-zinc-100 dark:border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden"
                     >
                         <div className="px-4 py-8 space-y-6">
                             <div className="space-y-4">
@@ -148,23 +148,23 @@ const Navbar = () => {
                                     <Link
                                         key={link.name}
                                         to={link.path}
-                                        className={`block text-lg font-bold px-4 py-3 rounded-2xl transition-all ${location.pathname === link.path ? 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-white/5'}`}
+                                        className={`block text-lg font-bold px-4 py-3 rounded-lg transition-all ${location.pathname === link.path ? 'bg-white dark:bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:'}`}
                                     >
                                         {link.name}
                                     </Link>
                                 ))}
                             </div>
 
-                            <div className="h-px bg-zinc-100 dark:bg-white/5 mx-4"></div>
+                            <div className="h-px bg-zinc-100 dark:bg-zinc-800 mx-4"></div>
 
                             {user ? (
                                 <div className="space-y-4">
-                                    <Link to="/dashboard" className="flex items-center gap-4 px-4 py-3 bg-zinc-50 dark:bg-white/5 rounded-2xl">
-                                        <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-blue-500/20">
+                                    <Link to="/dashboard" className="flex items-center gap-4 px-4 py-3 bg-zinc-50 dark:bg-zinc-800 rounded-lg">
+                                        <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-blue-200 dark:border-blue-800">
                                             {user.profilePicture ? (
                                                 <img src={getFileUrl(user.profilePicture)} className="w-full h-full object-cover" alt="Profile" />
                                             ) : (
-                                                <div className="w-full h-full bg-blue-500/10 flex items-center justify-center text-blue-500">
+                                                <div className="w-full h-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-500">
                                                     <UserCircle size={24} />
                                                 </div>
                                             )}
@@ -176,7 +176,7 @@ const Navbar = () => {
                                     </Link>
 
                                     {user.role === 'admin' && (
-                                        <Link to="/admin" className="flex items-center gap-3 px-4 py-4 rounded-2xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-500/20">
+                                        <Link to="/admin" className="flex items-center gap-3 px-4 py-4 rounded-lg bg-blue-600 text-white font-bold shadow-lg shadow-sm">
                                             <LayoutDashboard size={20} />
                                             Admin Dashboard
                                         </Link>
@@ -184,7 +184,7 @@ const Navbar = () => {
 
                                     <button
                                         onClick={logout}
-                                        className="w-full flex items-center justify-center gap-3 px-4 py-4 rounded-2xl bg-zinc-100 dark:bg-white/5 text-zinc-900 dark:text-white font-bold"
+                                        className="w-full flex items-center justify-center gap-3 px-4 py-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white font-bold"
                                     >
                                         <LogOut size={20} />
                                         Log Out
@@ -192,10 +192,10 @@ const Navbar = () => {
                                 </div>
                             ) : (
                                 <div className="grid grid-cols-2 gap-4">
-                                    <Link to="/login" className="flex justify-center items-center py-4 rounded-2xl bg-zinc-100 dark:bg-white/5 text-zinc-900 dark:text-white font-bold">
+                                    <Link to="/login" className="flex justify-center items-center py-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white font-bold">
                                         Login
                                     </Link>
-                                    <Link to="/register" className="flex justify-center items-center py-4 rounded-2xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-500/20">
+                                    <Link to="/register" className="flex justify-center items-center py-4 rounded-lg bg-blue-600 text-white font-bold shadow-lg shadow-sm">
                                         Sign Up
                                     </Link>
                                 </div>

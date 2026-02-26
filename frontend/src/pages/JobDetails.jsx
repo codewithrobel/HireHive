@@ -98,15 +98,15 @@ const JobDetails = () => {
     return (
         <div className="min-h-screen pb-12 overflow-x-hidden text-zinc-700 dark:text-zinc-300">
             {/* Header */}
-            <div className="border-b border-zinc-200 dark:border-white/10 pt-8 pb-12 relative overflow-hidden bg-zinc-50/50 dark:bg-black/20">
+            <div className="border-b border-zinc-200 dark:border-zinc-800 pt-8 pb-12 relative overflow-hidden bg-zinc-50/50 dark:bg-zinc-800">
                 {/* Decorative background gradients */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 blur-[2px]"></div>
-                <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[150%] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"></div>
-                <div className="absolute bottom-[-50%] right-[-10%] w-[40%] h-[150%] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+                
+                
+                
 
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-                        <Link to="/jobs" className="inline-flex items-center text-sm font-bold text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-white mb-6 transition-all dark:hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] group">
+                        <Link to="/jobs" className="inline-flex items-center text-sm font-bold text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-white mb-6 transition-all dark:hover:drop-shadow-sm group">
                             <ChevronLeft size={16} className="mr-1 group-hover:-translate-x-1 transition-transform" /> Back to Jobs
                         </Link>
                     </motion.div>
@@ -120,7 +120,7 @@ const JobDetails = () => {
                         <div className="flex items-start gap-5">
                             <motion.div
                                 whileHover={{ scale: 1.05, rotate: 5 }}
-                                className="w-16 h-16 bg-blue-50 dark:bg-black/40 rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 font-black text-3xl border border-blue-100 dark:border-white/5 shadow-sm dark:shadow-[0_0_15px_rgba(99,102,241,0.2)] shrink-0 group-hover:shadow-md dark:group-hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all overflow-hidden"
+                                className="w-16 h-16 bg-blue-50 dark:bg-zinc-800 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 font-black text-3xl border border-blue-100 dark:border-zinc-200 dark:border-zinc-800 shadow-sm shrink-0 group-hover:shadow-md dark:group-hover:shadow-sm transition-all overflow-hidden"
                             >
                                 {job.companyLogo ? (
                                     <img src={getFileUrl(job.companyLogo)} alt={`${job.company} Logo`} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
@@ -144,16 +144,16 @@ const JobDetails = () => {
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => setShowApplyModal(true)}
-                                    className="relative group overflow-hidden px-8 py-3 rounded-xl font-bold transition-all border border-blue-200 dark:border-blue-500/50 shadow-[0_8px_30px_rgba(99,102,241,0.1)] dark:shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.2)] dark:hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] bg-white/80 dark:bg-blue-600/20 backdrop-blur-md"
+                                    className="hover:bg-blue-600 hover:text-white transition-colors border border-blue-200 bg-white text-blue-600 dark:bg-blue-600/20 dark:text-blue-100 px-8 py-3 rounded-lg font-bold transition-all  dark:border-blue-200 dark:border-blue-800 shadow-sm   dark:bg-blue-600/20 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    
                                     <span className="relative z-10 text-blue-600 dark:text-blue-100 group-hover:text-white drop-shadow-md">Apply Now</span>
                                 </motion.button>
                             )}
                             {isRecruiterOwner && (
                                 <Link
                                     to={`/dashboard`}
-                                    className="px-6 py-3 bg-white/80 dark:bg-white/5 backdrop-blur-md border border-white/80 dark:border-white/10 text-zinc-900 dark:text-white font-bold rounded-xl hover:bg-white dark:hover:bg-white/10 hover:border-white flex items-center justify-center transition-all shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-none"
+                                    className="px-6 py-3 bg-white dark:bg-zinc-800 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 dark:border-zinc-200 text-zinc-900 dark:text-white font-bold rounded-lg hover:bg-white dark:hover:bg-white hover:border-white flex items-center justify-center transition-all shadow-sm dark:shadow-none"
                                 >
                                     <Users size={18} className="mr-2 text-blue-500 dark:text-blue-400" />
                                     View Applicants
@@ -162,9 +162,9 @@ const JobDetails = () => {
                             {!user && (
                                 <Link
                                     to="/login"
-                                    className="relative group overflow-hidden px-8 py-3 rounded-xl font-bold transition-all border border-blue-200 dark:border-blue-500/50 shadow-[0_0_15px_rgba(99,102,241,0.1)] dark:shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:shadow-[0_0_25px_rgba(99,102,241,0.2)] dark:hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] bg-blue-50 dark:bg-blue-600/20 text-center"
+                                    className="hover:bg-blue-600 hover:text-white transition-colors border border-blue-200 bg-blue-50 text-blue-600 dark:bg-blue-600/20 dark:text-blue-100 px-8 py-3 rounded-lg font-bold transition-all  dark:border-blue-200 dark:border-blue-800 shadow-sm   dark:bg-blue-600/20 text-center"
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    
                                     <span className="relative z-10 text-blue-600 dark:text-blue-100 group-hover:text-white drop-shadow-md">Sign in to Apply</span>
                                 </Link>
                             )}
@@ -182,9 +182,9 @@ const JobDetails = () => {
             >
                 {/* Left Column - Main Details */}
                 <div className="lg:col-span-2 space-y-8">
-                    <motion.div variants={itemVariants} className="bg-white/60 dark:bg-white/5 backdrop-blur-2xl rounded-2xl p-8 border border-white/60 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:border-white/80 dark:hover:border-white/20 transition-all">
+                    <motion.div variants={itemVariants} className="bg-white dark:bg-zinc-800 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-8 dark:border-zinc-200 shadow-sm hover:border-zinc-200 dark:hover:border-zinc-200 transition-all">
                         <h2 className="text-xl font-extrabold text-zinc-900 dark:text-white mb-4 flex items-center">
-                            <span className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/30 flex justify-center items-center mr-3 shadow-sm dark:shadow-[0_0_10px_rgba(99,102,241,0.2)]">
+                            <span className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-200 dark:border-blue-800 flex justify-center items-center mr-3 shadow-sm">
                                 <Briefcase size={18} />
                             </span>
                             Job Description
@@ -194,11 +194,11 @@ const JobDetails = () => {
                         </div>
                     </motion.div>
 
-                    <motion.div variants={itemVariants} className="bg-white/60 dark:bg-white/5 backdrop-blur-2xl rounded-2xl p-8 border border-white/60 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:border-white/80 dark:hover:border-white/20 transition-all">
+                    <motion.div variants={itemVariants} className="bg-white dark:bg-zinc-800 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-8 dark:border-zinc-200 shadow-sm hover:border-zinc-200 dark:hover:border-zinc-200 transition-all">
                         <h2 className="text-xl font-extrabold text-zinc-900 dark:text-white mb-4">Required Skills</h2>
                         <div className="flex flex-wrap gap-2.5">
                             {job.skills?.length > 0 ? job.skills.map((skill, index) => (
-                                <span key={index} className="px-4 py-2 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-300 font-bold rounded-xl border border-blue-200 dark:border-blue-500/30 hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-colors shadow-sm dark:shadow-[0_0_10px_rgba(99,102,241,0.1)] cursor-default">
+                                <span key={index} className="px-4 py-2 bg-blue-50 dark:bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 font-bold rounded-lg border border-blue-200 dark:border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-100 transition-colors shadow-sm cursor-default">
                                     {skill}
                                 </span>
                             )) : <span className="text-zinc-500 font-medium">Not specified</span>}
@@ -208,11 +208,11 @@ const JobDetails = () => {
 
                 {/* Right Column - Meta Data */}
                 <div className="lg:col-span-1 space-y-6">
-                    <motion.div variants={itemVariants} className="bg-white/60 dark:bg-white/5 backdrop-blur-2xl rounded-2xl p-6 border border-white/60 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:border-white/80 dark:hover:border-white/20 transition-all">
-                        <h3 className="text-lg font-extrabold text-zinc-900 dark:text-white mb-5 border-b border-zinc-200 dark:border-white/10 pb-3 drop-shadow-sm">Job Overview</h3>
+                    <motion.div variants={itemVariants} className="bg-white dark:bg-zinc-800 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-6 dark:border-zinc-200 shadow-sm hover:border-zinc-200 dark:hover:border-zinc-200 transition-all">
+                        <h3 className="text-lg font-extrabold text-zinc-900 dark:text-white mb-5 border-b border-zinc-200 dark:border-zinc-800 pb-3 drop-shadow-sm">Job Overview</h3>
                         <div className="space-y-5">
                             <div className="flex items-start">
-                                <span className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-500/20 border border-blue-200 dark:border-blue-500/30 flex items-center justify-center mr-4 shrink-0 text-blue-600 dark:text-blue-400 shadow-sm dark:shadow-[0_0_10px_rgba(99,102,241,0.2)]">
+                                <span className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-100 dark:bg-blue-900/40 border border-blue-200 dark:border-blue-200 dark:border-blue-800 flex items-center justify-center mr-4 shrink-0 text-blue-600 dark:text-blue-400 shadow-sm">
                                     <Briefcase size={20} />
                                 </span>
                                 <div>
@@ -221,7 +221,7 @@ const JobDetails = () => {
                                 </div>
                             </div>
                             <div className="flex items-start">
-                                <span className="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/30 flex items-center justify-center mr-4 shrink-0 text-emerald-600 dark:text-emerald-400 shadow-sm dark:shadow-[0_0_10px_rgba(52,211,153,0.2)]">
+                                <span className="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/30 flex items-center justify-center mr-4 shrink-0 text-emerald-600 dark:text-emerald-400 shadow-sm">
                                     <MapPin size={20} />
                                 </span>
                                 <div>
@@ -230,7 +230,7 @@ const JobDetails = () => {
                                 </div>
                             </div>
                             <div className="flex items-start">
-                                <span className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-500/20 border border-purple-200 dark:border-purple-500/30 flex items-center justify-center mr-4 shrink-0 text-purple-600 dark:text-purple-400 shadow-sm dark:shadow-[0_0_10px_rgba(217,70,239,0.2)]">
+                                <span className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-100 dark:bg-purple-900/40 border border-purple-200 dark:border-purple-500/30 flex items-center justify-center mr-4 shrink-0 text-purple-600 dark:text-purple-400 shadow-sm">
                                     <DollarSign size={20} />
                                 </span>
                                 <div>
@@ -239,7 +239,7 @@ const JobDetails = () => {
                                 </div>
                             </div>
                             <div className="flex items-start">
-                                <span className="w-10 h-10 rounded-full bg-cyan-100 dark:bg-cyan-500/20 border border-cyan-200 dark:border-cyan-500/30 flex items-center justify-center mr-4 shrink-0 text-cyan-600 dark:text-cyan-400 shadow-sm dark:shadow-[0_0_10px_rgba(6,182,212,0.2)]">
+                                <span className="w-10 h-10 rounded-full bg-cyan-100 dark:bg-cyan-500/20 border border-cyan-200 dark:border-cyan-500/30 flex items-center justify-center mr-4 shrink-0 text-cyan-600 dark:text-cyan-400 shadow-sm">
                                     <Calendar size={20} />
                                 </span>
                                 <div>
@@ -249,7 +249,7 @@ const JobDetails = () => {
                             </div>
                             {job.deadline && (
                                 <div className="flex items-start">
-                                    <span className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-500/20 border border-rose-200 dark:border-rose-500/30 flex items-center justify-center mr-4 shrink-0 text-rose-600 dark:text-rose-400 shadow-sm dark:shadow-[0_0_10px_rgba(244,63,94,0.2)]">
+                                    <span className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-500/20 border border-rose-200 dark:border-rose-500/30 flex items-center justify-center mr-4 shrink-0 text-rose-600 dark:text-rose-400 shadow-sm">
                                         <Clock size={20} />
                                     </span>
                                     <div>
@@ -266,15 +266,15 @@ const JobDetails = () => {
             {/* Apply Modal */}
             {
                 showApplyModal && (
-                    <div className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-4">
+                    <div className="fixed inset-0 bg-black/40 dark:bg-zinc-900 bg-white border border-zinc-200 dark:border-zinc-800 flex items-center justify-center z-50 p-4">
                         <motion.div
                             initial={{ scale: 0.95, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            className="bg-white/80 dark:bg-zinc-900/90 backdrop-blur-3xl border border-white/60 dark:border-white/10 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_0_40px_rgba(0,0,0,0.5)] w-full max-w-md p-6 relative overflow-hidden"
+                            className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 dark:border-zinc-200 rounded-lg shadow-sm w-full max-w-md p-6 relative overflow-hidden"
                         >
                             {/* Decorative modal glow */}
-                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl"></div>
-                            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl"></div>
+                            
+                            
 
                             <div className="flex justify-between items-center mb-6 relative z-10">
                                 <h3 className="text-xl font-bold text-zinc-900 dark:text-white drop-shadow-sm">Apply for this Job</h3>
@@ -288,11 +288,11 @@ const JobDetails = () => {
                                     <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2 flex items-center">
                                         Upload Resume (PDF, DOC, DOCX) <span className="text-red-500 ml-1 text-2xl leading-none">*</span>
                                     </label>
-                                    <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-zinc-300 dark:border-zinc-700 hover:border-blue-500/50 border-dashed rounded-xl bg-zinc-50 dark:bg-black/30 hover:bg-zinc-100 dark:hover:bg-black/40 transition-all shadow-inner">
+                                    <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-zinc-300 dark:border-zinc-700 hover:border-blue-200 dark:border-blue-800 border-dashed rounded-lg bg-zinc-50 dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-black/40 transition-all shadow-inner">
                                         <div className="space-y-1 text-center">
-                                            <Upload className="mx-auto h-10 w-10 text-blue-500/70 dark:text-blue-400/70 shadow-none dark:drop-shadow-[0_0_5px_rgba(99,102,241,0.3)]" />
+                                            <Upload className="mx-auto h-10 w-10 text-blue-500/70 dark:text-blue-400/70 shadow-none dark:drop-shadow-sm" />
                                             <div className="flex text-sm text-zinc-500 dark:text-zinc-400 justify-center">
-                                                <label htmlFor="file-upload" className="relative cursor-pointer rounded-md font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 focus-within:outline-none flex justify-center items-center">
+                                                <label htmlFor="file-upload" className="relative cursor-pointer rounded font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 focus-within:outline-none flex justify-center items-center">
                                                     <span className="px-2 drop-shadow-sm">Click to select a file</span>
                                                     <input id="file-upload" name="file-upload" type="file" className="sr-only" accept=".pdf,.doc,.docx" onChange={(e) => setFile(e.target.files[0])} />
                                                 </label>
@@ -307,9 +307,9 @@ const JobDetails = () => {
                                 <button
                                     type="submit"
                                     disabled={!file || applying}
-                                    className="w-full relative group overflow-hidden bg-blue-50 dark:bg-blue-600/20 border border-blue-200 dark:border-blue-500/50 text-blue-600 dark:text-blue-100 font-bold py-3 rounded-xl hover:shadow-md dark:hover:shadow-[0_0_15px_rgba(99,102,241,0.4)] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="w-full hover:bg-blue-600 hover:text-white transition-colors border border-blue-200 bg-blue-50 text-blue-600 dark:bg-blue-600/20 dark:text-blue-100  dark:bg-blue-600/20  dark:border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-100 font-bold py-3 rounded-lg hover:shadow-md dark:hover:shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    
                                     <span className="relative z-10 group-hover:text-white transition-colors">{applying ? 'Submitting Application...' : 'Submit Application'}</span>
                                 </button>
                             </form>

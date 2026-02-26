@@ -9,7 +9,7 @@ const Dashboard = () => {
 
     if (loading) {
         return <div className="flex justify-center items-center h-[calc(100vh-4rem)]">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 shadow-sm"></div>
         </div>;
     }
 

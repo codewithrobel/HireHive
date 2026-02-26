@@ -11,8 +11,7 @@ const About = () => {
                 className="text-center max-w-3xl mx-auto mb-16"
             >
                 <h1 className="text-4xl md:text-5xl font-extrabold text-zinc-900 dark:text-white mb-6 drop-shadow-sm">
-                    Connecting Talent with <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">Opportunity</span>
-                </h1>
+                    Connecting Talent with <span className="text-zinc-900 dark:text-white">Opportunity</span></h1>
                 <p className="text-lg text-zinc-600 dark:text-zinc-300">
                     HireHive is the premier platform for tech professionals and top-tier companies. We bridge the gap between world-class talent and innovative organizations.
                 </p>
@@ -45,10 +44,10 @@ const About = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="bg-white/60 dark:bg-white/5 backdrop-blur-2xl rounded-3xl p-8 md:p-12 border border-white/60 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-none relative overflow-hidden"
+                className="bg-white dark:bg-zinc-800 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-8 md:p-12 dark:border-zinc-200 shadow-sm dark:shadow-none relative overflow-hidden"
             >
-                <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -ml-20 -mb-20"></div>
+
+
 
                 <div className="relative z-10">
                     <h2 className="text-2xl font-bold text-zinc-900 dark:text-white mb-4">Our Mission</h2>
@@ -64,9 +63,9 @@ const About = () => {
 const FeatureCard = ({ icon, title, desc }) => (
     <motion.div
         whileHover={{ y: -5 }}
-        className="bg-white/60 dark:bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/60 dark:border-white/10 shadow-sm dark:shadow-none hover:border-blue-200 dark:hover:border-blue-500/30 transition-all group"
+        className="bg-white dark:bg-zinc-800 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 rounded-lg dark:border-zinc-200 shadow-sm dark:shadow-none hover:border-blue-200 dark:hover:border-blue-200 dark:border-blue-800 transition-all group"
     >
-        <div className="w-12 h-12 bg-blue-50 dark:bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4 group-hover:scale-110 transition-transform">
+        <div className="w-12 h-12 bg-blue-50 dark:bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4 group-hover:scale-110 transition-transform">
             {icon}
         </div>
         <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-2">{title}</h3>

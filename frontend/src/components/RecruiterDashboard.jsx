@@ -45,10 +45,10 @@ const RecruiterDashboard = () => {
     return (
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <motion.div variants={itemVariants} className="bg-white/60 dark:bg-white/5 backdrop-blur-2xl rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-white/60 dark:border-white/10 p-6 flex flex-col justify-between hover:border-white/80 dark:hover:border-white/20 hover:bg-white/80 dark:hover:bg-white/5 transition-all relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-xl -mr-8 -mt-8 transition-transform group-hover:scale-150 duration-700"></div>
+                <motion.div variants={itemVariants} className="bg-white dark:bg-zinc-800 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-sm dark:border-zinc-200 p-6 flex flex-col justify-between hover:border-zinc-200 dark:hover:border-zinc-200 hover:bg-white dark:hover:bg-white transition-all relative overflow-hidden group">
+                    
                     <div className="flex items-center space-x-4 mb-4 relative z-10">
-                        <div className="p-3 bg-blue-50 dark:bg-black/30 border border-blue-100 dark:border-white/5 text-blue-600 dark:text-blue-400 rounded-xl shadow-sm dark:shadow-[0_0_15px_rgba(99,102,241,0.2)]">
+                        <div className="p-3 bg-blue-50 dark:bg-zinc-800 border border-blue-100 dark:border-zinc-200 dark:border-zinc-800 text-blue-600 dark:text-blue-400 rounded-lg shadow-sm">
                             <Briefcase size={28} />
                         </div>
                         <div>
@@ -58,10 +58,10 @@ const RecruiterDashboard = () => {
                     <h3 className="text-4xl font-extrabold text-zinc-900 dark:text-white drop-shadow-sm relative z-10">{loading ? '-' : myJobs.length}</h3>
                 </motion.div>
 
-                <motion.div variants={itemVariants} className="bg-white/60 dark:bg-white/5 backdrop-blur-2xl rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-white/60 dark:border-white/10 p-6 flex flex-col justify-between hover:border-white/80 dark:hover:border-white/20 hover:bg-white/80 dark:hover:bg-white/5 transition-all relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl -mr-8 -mt-8 transition-transform group-hover:scale-150 duration-700"></div>
+                <motion.div variants={itemVariants} className="bg-white dark:bg-zinc-800 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-sm dark:border-zinc-200 p-6 flex flex-col justify-between hover:border-zinc-200 dark:hover:border-zinc-200 hover:bg-white dark:hover:bg-white transition-all relative overflow-hidden group">
+                    
                     <div className="flex items-center space-x-4 mb-4 relative z-10">
-                        <div className="p-3 bg-emerald-50 dark:bg-black/30 border border-emerald-100 dark:border-white/5 text-emerald-600 dark:text-emerald-400 rounded-xl shadow-sm dark:shadow-[0_0_15px_rgba(52,211,153,0.2)]">
+                        <div className="p-3 bg-emerald-50 dark:bg-zinc-800 border border-emerald-100 dark:border-zinc-200 dark:border-zinc-800 text-emerald-600 dark:text-emerald-400 rounded-lg shadow-sm">
                             <Activity size={28} />
                         </div>
                         <div>
@@ -72,8 +72,8 @@ const RecruiterDashboard = () => {
                 </motion.div>
 
                 <motion.div variants={itemVariants} className="h-full">
-                    <Link to="/post-job" className="bg-gradient-to-br from-blue-300/20 via-white/50 to-purple-300/20 dark:from-blue-900/40 dark:via-blue-600/30 dark:to-purple-900/40 border border-white/80 dark:border-blue-500/30 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_0_20px_rgba(99,102,241,0.2)] p-6 flex items-center justify-between text-zinc-900 dark:text-white hover:shadow-[0_8px_30px_rgba(99,102,241,0.1)] dark:hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:border-white transition-all h-full group relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 dark:via-white/10 to-transparent blur-md transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    <Link to="/post-job" className="bg-gradient-to-br from-blue-300/20 via-white/50 to-purple-300/20 dark:from-blue-900/40 dark:via-blue-600/30 dark:to-purple-900/40 border border-zinc-200 dark:border-zinc-800 dark:border-blue-200 dark:border-blue-800 bg-white dark:bg-zinc-900 rounded-lg shadow-sm p-6 flex items-center justify-between text-zinc-900 dark:text-white  hover:border-white transition-all h-full group relative overflow-hidden">
+                        
                         <div className="relative z-10">
                             <h3 className="text-xl font-extrabold mb-1 drop-shadow-sm group-hover:text-blue-700 dark:group-hover:text-blue-200 transition-colors">Post a New Job</h3>
                             <p className="text-blue-700/80 dark:text-blue-200/80 text-sm font-medium">Find your next great hire</p>
@@ -83,10 +83,10 @@ const RecruiterDashboard = () => {
                 </motion.div>
             </div>
 
-            <motion.div variants={itemVariants} className="bg-white/60 dark:bg-white/5 backdrop-blur-2xl rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-white/60 dark:border-white/10 p-8 overflow-hidden hover:border-white/80 dark:hover:border-white/20 transition-all">
+            <motion.div variants={itemVariants} className="bg-white dark:bg-zinc-800 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-sm dark:border-zinc-200 p-8 overflow-hidden hover:border-zinc-200 dark:hover:border-zinc-200 transition-all">
                 <div className="flex items-center justify-between mb-8">
                     <h2 className="text-2xl font-extrabold text-zinc-900 dark:text-white flex items-center drop-shadow-sm">
-                        <div className="p-2 bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/30 rounded-lg mr-3 shadow-sm dark:shadow-[0_0_10px_rgba(99,102,241,0.2)]">
+                        <div className="p-2 bg-blue-100 dark:bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-200 dark:border-blue-800 rounded-lg mr-3 shadow-sm">
                             <Users size={20} />
                         </div>
                         Your Recent Postings
@@ -94,14 +94,14 @@ const RecruiterDashboard = () => {
                 </div>
 
                 {loading ? (
-                    <div className="py-16 flex justify-center"><div className="animate-spin rounded-full h-10 w-10 border-t-4 border-b-4 border-blue-500 shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div></div>
+                    <div className="py-16 flex justify-center"><div className="animate-spin rounded-full h-10 w-10 border-t-4 border-b-4 border-blue-500 shadow-sm"></div></div>
                 ) : myJobs.length === 0 ? (
-                    <div className="text-center py-16 bg-zinc-50 dark:bg-black/20 rounded-2xl border border-dashed border-zinc-300 dark:border-white/10 shadow-inner">
-                        <div className="w-16 h-16 bg-white dark:bg-black/40 rounded-full flex items-center justify-center mx-auto mb-4 border border-zinc-200 dark:border-white/5 shadow-sm dark:shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+                    <div className="text-center py-16 bg-zinc-50 dark:bg-zinc-800 rounded-lg border border-dashed border-zinc-300 dark:border-zinc-200 dark:border-zinc-800 shadow-inner">
+                        <div className="w-16 h-16 bg-white dark:bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-4 border border-zinc-200 dark:border-zinc-800 shadow-sm">
                             <Briefcase className="text-zinc-400 dark:text-zinc-500" size={24} />
                         </div>
                         <p className="text-zinc-500 dark:text-zinc-400 font-medium text-lg mb-6">You haven't posted any jobs yet.</p>
-                        <Link to="/post-job" className="px-6 py-3 bg-white dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl font-bold text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all shadow-sm inline-block">
+                        <Link to="/post-job" className="px-6 py-3 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 rounded-lg font-bold text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-white hover:text-zinc-900 dark:hover:text-white transition-all shadow-sm inline-block">
                             Create your first listing
                         </Link>
                     </div>
@@ -113,12 +113,12 @@ const RecruiterDashboard = () => {
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.1 }}
-                                className="py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 group hover:bg-white/80 dark:hover:bg-black/20 transition-colors rounded-xl px-4 -mx-4 cursor-default"
+                                className="py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 group hover:bg-white dark:hover:bg-black/20 transition-colors rounded-lg px-4 -mx-4 cursor-default"
                             >
                                 <div>
                                     <h3 className="text-lg font-bold text-zinc-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors drop-shadow-sm">{job.title}</h3>
                                     <div className="text-sm font-medium text-zinc-500 dark:text-zinc-400 flex items-center gap-3 mt-1.5 group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors">
-                                        <span className="flex items-center px-2 py-0.5 bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded text-zinc-600 dark:text-zinc-300 shadow-inner">{job.type}</span>
+                                        <span className="flex items-center px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 rounded text-zinc-600 dark:text-zinc-300 shadow-inner">{job.type}</span>
                                         <span className="text-zinc-300 dark:text-zinc-600">•</span>
                                         <span className="flex items-center"><MapPin size={14} className="mr-1 inline text-blue-500/80 dark:text-blue-400/80" /> {job.location}</span>
                                         <span className="text-zinc-300 dark:text-zinc-600">•</span>
@@ -127,7 +127,7 @@ const RecruiterDashboard = () => {
                                 </div>
                                 <Link
                                     to={`/jobs/${job._id}/applicants`}
-                                    className="px-5 py-2.5 bg-blue-50 dark:bg-blue-600/10 border border-blue-200 dark:border-blue-500/30 rounded-xl text-sm font-bold text-blue-600 dark:text-blue-300 hover:text-blue-900 dark:hover:text-white hover:border-blue-400 dark:hover:border-blue-400/80 shadow-sm dark:shadow-[0_0_10px_rgba(99,102,241,0.1)] hover:shadow-md dark:hover:shadow-[0_0_15px_rgba(99,102,241,0.3)] flex items-center justify-center transition-all hover:bg-blue-100 dark:hover:bg-blue-600/30 group/btn"
+                                    className="px-5 py-2.5 bg-blue-50 dark:bg-blue-600/10 border border-blue-200 dark:border-blue-200 dark:border-blue-800 rounded-lg text-sm font-bold text-blue-600 dark:text-blue-300 hover:text-blue-900 dark:hover:text-white hover:border-blue-400 dark:hover:border-blue-400/80 shadow-sm hover:shadow-md dark:hover:shadow-sm flex items-center justify-center transition-all hover:bg-blue-100 dark:hover:bg-blue-600/30 group/btn"
                                 >
                                     View Applicants <ChevronRight size={16} className="ml-1 group-hover/btn:translate-x-1 transition-transform" />
                                 </Link>

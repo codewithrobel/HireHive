@@ -38,9 +38,7 @@ const Navbar = () => {
                         className="flex items-center"
                     >
                         <Link to="/" className="flex-shrink-0 flex items-center gap-2.5 group relative">
-                            <div className="relative w-10 h-10 bg-[#1e2535] rounded-xl flex items-center justify-center shadow-md transition-transform group-hover:scale-105 border border-[#2a3045]">
-                                <Briefcase className="h-5 w-5 text-[#4ea0f5]" strokeWidth={2.5} />
-                            </div>
+                            <img src="/logo.png" alt="HireHive" className="w-10 h-10 object-contain transition-transform group-hover:scale-105" />
                             <span className="font-extrabold text-2xl text-zinc-900 dark:text-white tracking-tight">
                                 HireHive
                             </span>

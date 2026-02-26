@@ -55,8 +55,8 @@ const PostJob = () => {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
             <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-sm p-8 relative overflow-hidden">
                 {/* Decorative glows */}
-                
-                
+
+
 
                 <div className="mb-8 relative z-10">
                     <h1 className="text-3xl font-extrabold text-white drop-shadow-sm tracking-tight">Post a New Job</h1>
@@ -198,9 +198,8 @@ const PostJob = () => {
                         <button type="button" onClick={() => navigate('/dashboard')} className="px-6 py-3 font-bold text-zinc-400 hover:text-white transition-colors">
                             Cancel
                         </button>
-                        <button type="submit" className="hover:bg-blue-600 hover:text-white transition-colors border border-blue-200 bg-blue-50 text-blue-600 dark:bg-blue-600/20 dark:text-blue-100 px-8 py-3 rounded-lg font-bold transition-all  dark:border-blue-800 shadow-sm hover:shadow-sm bg-blue-600/20">
-                            
-                            <span className="relative z-10 text-blue-100 group-hover:text-white drop-shadow-md transition-colors">Post Job</span>
+                        <button type="submit" className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold transition-colors shadow-sm cursor-pointer">
+                            Post Job
                         </button>
                     </div>
                 </form>

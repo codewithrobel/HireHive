@@ -26,7 +26,7 @@ const applyForJob = async (req, res, next) => {
         let resumeOriginalName = null;
 
         if (req.file) {
-            resumeUrl = `/${req.file.path.replace(/\\/g, '/')}`; // Normalize paths for cross-platform
+            resumeUrl = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
             resumeOriginalName = req.file.originalname;
 
             req.user.resumeUrl = resumeUrl;

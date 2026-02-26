@@ -18,7 +18,7 @@ const createJob = async (req, res, next) => {
             experience,
             deadline,
             postedBy: req.user._id,
-            companyLogo: req.file ? `/uploads/${req.file.filename}` : undefined
+            companyLogo: req.file ? `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}` : undefined
         });
 
         const createdJob = await job.save();
@@ -113,7 +113,7 @@ const updateJob = async (req, res, next) => {
             job.deadline = deadline || job.deadline;
 
             if (req.file) {
-                job.companyLogo = `/uploads/${req.file.filename}`;
+                job.companyLogo = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
             }
 
             const updatedJob = await job.save();

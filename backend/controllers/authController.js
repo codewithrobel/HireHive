@@ -163,7 +163,7 @@ const updateUserProfile = async (req, res, next) => {
             }
 
             if (req.file) {
-                user.profilePicture = `/uploads/${req.file.filename}`;
+                user.profilePicture = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
             }
 
             const updatedUser = await user.save();
@@ -203,7 +203,7 @@ const uploadResume = async (req, res, next) => {
         const user = await User.findById(req.user._id);
 
         if (user) {
-            user.resumeUrl = `/uploads/${req.file.filename}`;
+            user.resumeUrl = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
             user.resumeOriginalName = req.file.originalname;
 
             const updatedUser = await user.save();

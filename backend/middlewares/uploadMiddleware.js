@@ -8,18 +8,8 @@ if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
 }
 
-// Storage engine
-const storage = multer.diskStorage({
-    destination(req, file, cb) {
-        cb(null, uploadDir);
-    },
-    filename(req, file, cb) {
-        cb(
-            null,
-            `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
-        );
-    },
-});
+// Storage engine - using MemoryStorage to convert to Base64
+const storage = multer.memoryStorage();
 
 function checkFileType(file, cb) {
     if (file.fieldname === 'profilePicture' || file.fieldname === 'companyLogo') {
@@ -46,7 +36,7 @@ function checkFileType(file, cb) {
 
 const upload = multer({
     storage,
-    limits: { fileSize: 5000000 }, // 5MB
+    limits: { fileSize: 3000000 }, // 3MB limit for base64 storage in MongoDB
     fileFilter: function (req, file, cb) {
         checkFileType(file, cb);
     },

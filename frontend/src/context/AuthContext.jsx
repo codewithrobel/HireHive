@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
     const getFileUrl = (path) => {
         if (!path) return '';
-        if (path.startsWith('http')) return path;
+        if (path.startsWith('http') || path.startsWith('data:')) return path;
         const baseUrl = import.meta.env.PROD ? 'https://hirehive-o1x6.onrender.com' : 'http://localhost:5001';
         return `${baseUrl}${path}`;
     };

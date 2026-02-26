@@ -309,11 +309,10 @@ const JobDetails = () => {
 
                                 <button
                                     type="submit"
-                                    disabled={!file || applying}
-                                    className="w-full hover:bg-blue-600 hover:text-white transition-colors border border-blue-200 bg-blue-50 text-blue-600 dark:bg-blue-600/20 dark:text-blue-100  dark:bg-blue-600/20  dark:border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-100 font-bold py-3 rounded-lg hover:shadow-md dark:hover:shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                    disabled={(!file && !user?.resumeUrl) || applying}
+                                    className="w-full px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-
-                                    <span className="relative z-10 group-hover:text-white transition-colors">{applying ? 'Submitting Application...' : 'Submit Application'}</span>
+                                    {applying ? 'Submitting Application...' : 'Submit Application'}
                                 </button>
                             </form>
                         </motion.div>

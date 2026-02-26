@@ -22,18 +22,29 @@ const applyForJob = async (req, res, next) => {
             throw new Error('You have already applied for this job');
         }
 
-        if (!req.file) {
+        let resumeUrl = null;
+        let resumeOriginalName = null;
+
+        if (req.file) {
+            resumeUrl = `/${req.file.path.replace(/\\/g, '/')}`; // Normalize paths for cross-platform
+            resumeOriginalName = req.file.originalname;
+
+            req.user.resumeUrl = resumeUrl;
+            req.user.resumeOriginalName = resumeOriginalName;
+            await req.user.save();
+        } else if (req.user.resumeUrl) {
+            resumeUrl = req.user.resumeUrl;
+            resumeOriginalName = req.user.resumeOriginalName;
+        } else {
             res.status(400);
             throw new Error('Please upload a resume');
         }
-
-        const resumeUrl = `/${req.file.path.replace(/\\/g, '/')}`; // Normalize paths for cross-platform
 
         const application = await Application.create({
             job: req.params.jobId,
             applicant: req.user._id,
             resumeUrl,
-            resumeOriginalName: req.file.originalname,
+            resumeOriginalName,
         });
 
         res.status(201).json(application);

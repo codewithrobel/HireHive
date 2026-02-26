@@ -44,12 +44,6 @@ const JobDetails = () => {
             const formData = new FormData();
             if (file) {
                 formData.append('resume', file);
-            } else {
-                if (!file) {
-                    toast.error('Backend requires a new file upload for each application currently.');
-                    setApplying(false);
-                    return;
-                }
             }
 
             await axios.post(`/applications/${id}`, formData, {
@@ -100,9 +94,9 @@ const JobDetails = () => {
             {/* Header */}
             <div className="border-b border-zinc-200 dark:border-zinc-800 pt-8 pb-12 relative overflow-hidden bg-zinc-50/50 dark:bg-zinc-800">
                 {/* Decorative background gradients */}
-                
-                
-                
+
+
+
 
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
@@ -146,7 +140,7 @@ const JobDetails = () => {
                                     onClick={() => setShowApplyModal(true)}
                                     className="hover:bg-blue-600 hover:text-white transition-colors border border-blue-200 bg-white text-blue-600 dark:bg-blue-600/20 dark:text-blue-100 px-8 py-3 rounded-lg font-bold transition-all  dark:border-blue-200 dark:border-blue-800 shadow-sm   dark:bg-blue-600/20 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
                                 >
-                                    
+
                                     <span className="relative z-10 text-blue-600 dark:text-blue-100 group-hover:text-white drop-shadow-md">Apply Now</span>
                                 </motion.button>
                             )}
@@ -164,7 +158,7 @@ const JobDetails = () => {
                                     to="/login"
                                     className="hover:bg-blue-600 hover:text-white transition-colors border border-blue-200 bg-blue-50 text-blue-600 dark:bg-blue-600/20 dark:text-blue-100 px-8 py-3 rounded-lg font-bold transition-all  dark:border-blue-200 dark:border-blue-800 shadow-sm   dark:bg-blue-600/20 text-center"
                                 >
-                                    
+
                                     <span className="relative z-10 text-blue-600 dark:text-blue-100 group-hover:text-white drop-shadow-md">Sign in to Apply</span>
                                 </Link>
                             )}
@@ -273,8 +267,8 @@ const JobDetails = () => {
                             className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 dark:border-zinc-200 rounded-lg shadow-sm w-full max-w-md p-6 relative overflow-hidden"
                         >
                             {/* Decorative modal glow */}
-                            
-                            
+
+
 
                             <div className="flex justify-between items-center mb-6 relative z-10">
                                 <h3 className="text-xl font-bold text-zinc-900 dark:text-white drop-shadow-sm">Apply for this Job</h3>
@@ -286,14 +280,23 @@ const JobDetails = () => {
                             <form onSubmit={handleApply} className="space-y-5 relative z-10">
                                 <div>
                                     <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2 flex items-center">
-                                        Upload Resume (PDF, DOC, DOCX) <span className="text-red-500 ml-1 text-2xl leading-none">*</span>
+                                        Upload Resume (PDF, DOC, DOCX) {!user?.resumeUrl && <span className="text-red-500 ml-1 text-2xl leading-none">*</span>}
                                     </label>
+                                    {user?.resumeUrl && (
+                                        <div className="mb-4 px-4 py-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg flex items-center justify-between shadow-sm">
+                                            <div className="flex flex-col">
+                                                <span className="text-xs text-blue-500 dark:text-blue-400 font-bold uppercase tracking-wider mb-0.5">Saved Resume</span>
+                                                <span className="text-sm font-bold text-blue-700 dark:text-blue-300">{user.resumeOriginalName || 'Profile Resume'}</span>
+                                            </div>
+                                            <span className="text-[10px] text-blue-600 dark:text-blue-400 font-black tracking-widest uppercase bg-white dark:bg-zinc-800 px-2.5 py-1.5 rounded-md shadow-sm opacity-80 border border-blue-100 dark:border-blue-700/50">Auto-Apply</span>
+                                        </div>
+                                    )}
                                     <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-zinc-300 dark:border-zinc-700 hover:border-blue-200 dark:border-blue-800 border-dashed rounded-lg bg-zinc-50 dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-black/40 transition-all shadow-inner">
                                         <div className="space-y-1 text-center">
                                             <Upload className="mx-auto h-10 w-10 text-blue-500/70 dark:text-blue-400/70 shadow-none dark:drop-shadow-sm" />
                                             <div className="flex text-sm text-zinc-500 dark:text-zinc-400 justify-center">
                                                 <label htmlFor="file-upload" className="relative cursor-pointer rounded font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 focus-within:outline-none flex justify-center items-center">
-                                                    <span className="px-2 drop-shadow-sm">Click to select a file</span>
+                                                    <span className="px-2">{user?.resumeUrl ? "Click to upload a different resume" : "Click to select a file"}</span>
                                                     <input id="file-upload" name="file-upload" type="file" className="sr-only" accept=".pdf,.doc,.docx" onChange={(e) => setFile(e.target.files[0])} />
                                                 </label>
                                             </div>
@@ -309,7 +312,7 @@ const JobDetails = () => {
                                     disabled={!file || applying}
                                     className="w-full hover:bg-blue-600 hover:text-white transition-colors border border-blue-200 bg-blue-50 text-blue-600 dark:bg-blue-600/20 dark:text-blue-100  dark:bg-blue-600/20  dark:border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-100 font-bold py-3 rounded-lg hover:shadow-md dark:hover:shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    
+
                                     <span className="relative z-10 group-hover:text-white transition-colors">{applying ? 'Submitting Application...' : 'Submit Application'}</span>
                                 </button>
                             </form>

@@ -37,11 +37,11 @@ const Navbar = () => {
                         whileTap={{ scale: 0.98 }}
                         className="flex items-center"
                     >
-                        <Link to="/" className="flex-shrink-0 flex items-center gap-2 group relative">
-                            <div className="relative p-2 bg-blue-50 dark:bg-blue-100 dark:bg-blue-900/40 rounded-lg border border-blue-100 dark:border-blue-200 dark:border-blue-800 group-hover:bg-blue-100 dark:group-hover:bg-blue-100 transition-all shadow-sm">
-                                <Briefcase className="h-6 w-6 text-blue-500 dark:text-blue-400" />
+                        <Link to="/" className="flex-shrink-0 flex items-center gap-2.5 group relative">
+                            <div className="relative w-10 h-10 bg-[#1e2535] rounded-xl flex items-center justify-center shadow-md transition-transform group-hover:scale-105 border border-[#2a3045]">
+                                <Briefcase className="h-5 w-5 text-[#4ea0f5]" strokeWidth={2.5} />
                             </div>
-                            <span className="font-black text-2xl text-zinc-900 dark:text-white dark:from-white dark:via-blue-200 dark:to-blue-400 tracking-tight">
+                            <span className="font-extrabold text-2xl text-zinc-900 dark:text-white tracking-tight">
                                 HireHive
                             </span>
                         </Link>

@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
 });
 
 function checkFileType(file, cb) {
-    if (file.fieldname === 'profilePicture') {
+    if (file.fieldname === 'profilePicture' || file.fieldname === 'companyLogo') {
         const filetypes = /jpeg|jpg|png|webp/;
         const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
         const mimetype = filetypes.test(file.mimetype);
@@ -30,7 +30,7 @@ function checkFileType(file, cb) {
         if (mimetype && extname) {
             return cb(null, true);
         } else {
-            cb(new Error('Images only for profile picture (JPEG, JPG, PNG, WEBP)!'));
+            cb(new Error(`Images only for ${file.fieldname} (JPEG, JPG, PNG, WEBP)!`));
         }
     } else {
         const filetypes = /pdf|doc|docx/;
